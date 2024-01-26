@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/OrigamiWang/msd/micro/server"
+	"github.com/OrigamiWang/msd/micro/framework"
 )
 
 func main() {
 	fmt.Println("Hello, world.")
-	server.NewGinWeb()
+	framework.NewGinWeb()
 }

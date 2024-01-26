@@ -1,4 +1,4 @@
-package server
+package framework
 
 import (
 	"github.com/OrigamiWang/msd/micro/model"
