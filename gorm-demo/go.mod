@@ -3,9 +3,11 @@ module github.com/OrigamiWang/msd/gorm-demo
 go 1.20
 
 require (
-	github.com/OrigamiWang/msd/micro v0.0.0-20240127061949-f6f377d163b9
+	github.com/OrigamiWang/msd/micro v0.0.0-20240127082120-aa40c7e8a892
 	github.com/gin-contrib/pprof v1.4.0
 	github.com/gin-gonic/gin v1.9.1
+	gorm.io/driver/mysql v1.5.2
+	gorm.io/gorm v1.25.6
 )
 
 require (
@@ -39,6 +41,4 @@ require (
 	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/protobuf v1.32.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	gorm.io/driver/mysql v1.5.2 // indirect
-	gorm.io/gorm v1.25.6 // indirect
 )

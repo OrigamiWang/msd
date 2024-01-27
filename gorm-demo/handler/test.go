@@ -7,6 +7,6 @@ import (
 )
 
 func Test(c *gin.Context, req interface{}) (resp interface{}, err errx.ErrX) {
-	logutil.Info(req)
+	logutil.Info("114514")
 	return nil, nil
 }

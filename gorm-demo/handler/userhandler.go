@@ -13,6 +13,7 @@ func UserBinder() interface{} {
 }
 
 func GetFirstUser(c *gin.Context, req interface{}) (resp interface{}, err errx.ErrX) {
+	logutil.Debug("-----test-----------")
 	r := req.(*dto.UserReq)
 	logutil.Info(r)
 	return dal.GetFirstUser(), nil
