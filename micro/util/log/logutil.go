@@ -15,7 +15,6 @@ func Info(arg0 interface{}, args ...interface{}) {
 	} else {
 		log4go.Info(arg0)
 	}
-	log4go.Close()
 }
 func Debug(arg0 interface{}, args ...interface{}) {
 	if len(args) > 0 {

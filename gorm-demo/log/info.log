@@ -3,3 +3,8 @@
 [2024/01/27 16:29:44 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/gorm-demo/handler.Test, req: <nil>
 [2024/01/27 16:30:39 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/gorm-demo/handler.GetFirstUser, req: {"id":1,"name":"origami"}
 [2024/01/27 16:53:07 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/gorm-demo/handler.GetFirstUser, req: {"id":1,"name":"origami"}
+[2024/01/27 16:58:08 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/gorm-demo/handler.GetFirstUser, req: {"id":1,"name":"origami"}
+[2024/01/27 17:04:24 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/gorm-demo/handler.GetFirstUser, req: {"id":1,"name":"origami"}
+[2024/01/27 17:10:41 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/gorm-demo/handler.GetFirstUser, req: {"id":1,"name":"11"}
+[2024/01/27 17:11:09 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/gorm-demo/handler.GetFirstUser, req: {"id":1,"name":"11"}
+[2024/01/27 17:12:04 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/gorm-demo/handler.GetFirstUser, req: {"id":1,"name":"11"}

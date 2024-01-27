@@ -1,19 +1,14 @@
 package dal
 
 import (
+	"fmt"
+	"github.com/OrigamiWang/msd/gorm-demo/model/dao"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
 var Db *gorm.DB
-
-type User struct {
-	ID   int
-	Name string
-	age  int
-	sex  string
-}
 
 func init() {
 	var err error
@@ -24,8 +19,9 @@ func init() {
 	}
 }
 
-func GetFirstUser() *User {
-	user := &User{}
+func GetFirstUser() *dao.UserDao {
+	user := &dao.UserDao{}
 	Db.First(user)
+	fmt.Println(user)
 	return user
 }
