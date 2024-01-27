@@ -8,7 +8,9 @@ import (
 func New() *gin.Engine {
 	gin.SetMode(gin.DebugMode)
 	g := gin.New()
-	// FIX ME: add middleware
+	g.Use(gin.Logger())
+	g.Use(gin.Recovery())
+	// FIXME: add customized middleware
 	// g.Use(TraceExtractor())
 	// g.Use(Trace())
 	// g.Use(Recovery())
