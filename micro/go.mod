@@ -5,7 +5,6 @@ go 1.20
 require (
 	github.com/gin-gonic/gin v1.9.1
 	github.com/jeanphorn/log4go v0.0.0-20231225120528-d93eb9001e51
-	github.com/OrigamiWang/msd/micro school_work
 )
 
 require (
