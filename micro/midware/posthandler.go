@@ -35,6 +35,7 @@ func PostHandler(handlerfunc PostHandlerFunc, binder ...HandlerReqBinder) gin.Ha
 				return
 			}
 			logutil.Info("PostHandler. handler begin, funcName: %v, req: %s", funcName, util.ReflectToString(req))
+			resp, err = handlerfunc(c, req)
 		} else {
 			logutil.Info("PostHandler. handler begin, funcName: %v, req: <nil>", funcName)
 			resp, err = handlerfunc(c, nil)
