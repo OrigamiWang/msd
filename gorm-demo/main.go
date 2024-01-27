@@ -5,14 +5,14 @@ import (
 	"github.com/OrigamiWang/msd/gorm-demo/handler"
 	"github.com/OrigamiWang/msd/micro/framework"
 	mw "github.com/OrigamiWang/msd/micro/midware"
-	"github.com/gin-contrib/pprof"
 )
 
 func main() {
 	fmt.Println("Hello, world.")
 	root := framework.NewGinWeb()
 	r := root.Group("/")
-	pprof.Register(root.Engine)
+	// pprof 性能监
+	//pprof.Register(root.Engine)
 
 	d := root.Group("/debug")
 	{
@@ -20,7 +20,10 @@ func main() {
 
 	}
 	{
-		r.POST("/p", mw.PostHandler(handler.GetFirstUser, handler.UserBinder))
+		r.GET("/user", mw.PostHandler(handler.GetUserListHandler))
+		r.GET("/user/:id", mw.PostHandler(handler.GetUserByIdHandler))
+		r.PUT("/user/:id", mw.PostHandler(handler.UpdateUserHandler, handler.UserBinder))
+		r.POST("/user", mw.PostHandler(handler.AddUserHandler, handler.UserBinder))
 	}
 	root.Run()
 }

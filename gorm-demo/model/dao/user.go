@@ -3,8 +3,8 @@ package dao
 type UserDao struct {
 	ID   int
 	Name string
-	age  int
-	sex  string
+	Age  int
+	Sex  string
 }
 
 func (UserDao) TableName() string {
