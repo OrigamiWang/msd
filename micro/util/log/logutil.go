@@ -11,21 +11,22 @@ func init() {
 
 func Info(arg0 interface{}, args ...interface{}) {
 	if len(args) > 0 {
-		log4go.Info(arg0, args)
+		log4go.Info(arg0, args...)
 	} else {
 		log4go.Info(arg0)
 	}
+	log4go.Close()
 }
 func Debug(arg0 interface{}, args ...interface{}) {
 	if len(args) > 0 {
-		log4go.Debug(arg0, args)
+		log4go.Debug(arg0, args...)
 	} else {
 		log4go.Debug(arg0)
 	}
 }
 func Error(arg0 interface{}, args ...interface{}) {
 	if len(args) > 0 {
-		log4go.Error(arg0, args)
+		log4go.Error(arg0, args...)
 	} else {
 		log4go.Error(arg0)
 	}
@@ -33,7 +34,7 @@ func Error(arg0 interface{}, args ...interface{}) {
 
 func Warn(arg0 interface{}, args ...interface{}) {
 	if len(args) > 0 {
-		log4go.Warn(arg0, args)
+		log4go.Warn(arg0, args...)
 	} else {
 		log4go.Warn(arg0)
 	}

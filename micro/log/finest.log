@@ -1,1 +1,7 @@
 [2024/01/26 15:07:39 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:16) 114514
+[2024/01/27 16:10:10 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) msg: [114514]
+[2024/01/27 16:11:44 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) funcName: [main.test 114514], msg: %!v(MISSING)
+[2024/01/27 16:12:07 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) funcName: [main.test], msg: %!v(MISSING)
+[2024/01/27 16:12:23 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) funcName: [109], msg: %!v(MISSING)
+[2024/01/27 16:12:33 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) funcName: [main.test 11], msg: %!v(MISSING)
+[2024/01/27 16:12:51 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) funcName: [11 11], msg: %!v(MISSING)
