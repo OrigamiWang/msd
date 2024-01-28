@@ -1,10 +1,10 @@
 package dao
 
 import (
-	"database/sql"
 	"github.com/OrigamiWang/msd/micro/confparser"
 	"github.com/OrigamiWang/msd/micro/const/db"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
+	"gorm.io/gorm"
 )
 
 // 初始化databases
@@ -34,9 +34,9 @@ func InitDb() {
 }
 
 // MySQL 返回mysql数据库
-func MySQL(key string) (mysql *sql.DB, err error) {
+func MySQL(key string) (mysql *gorm.DB, err error) {
 	if v, ok := dbConns[key]; ok {
-		return v.(*sql.DB), nil
+		return v.(*gorm.DB), nil
 	}
 	logutil.Error("connect mysql failed, err: %v", err)
 	return nil, err
