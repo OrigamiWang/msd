@@ -2,7 +2,7 @@ package midware
 
 import (
 	"fmt"
-	errcode "github.com/OrigamiWang/msd/micro/const"
+	"github.com/OrigamiWang/msd/micro/const/errcode"
 	"github.com/OrigamiWang/msd/micro/model"
 	"github.com/OrigamiWang/msd/micro/model/errx"
 	"github.com/OrigamiWang/msd/micro/util"
