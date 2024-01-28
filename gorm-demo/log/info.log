@@ -9,3 +9,5 @@
 [2024/01/28 17:08:11 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/gorm-demo/handler.GetUserByIdHandler, code: 0, msg: success. elapse: 884.6µs
 [2024/01/28 17:08:13 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/gorm-demo/handler.GetUserByIdHandler, req: <nil>
 [2024/01/28 17:08:13 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/gorm-demo/handler.GetUserByIdHandler, code: 0, msg: success. elapse: 999.7µs
+[2024/01/28 20:36:09 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/gorm-demo/handler.GetUserByIdHandler, req: <nil>
+[2024/01/28 20:36:09 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/gorm-demo/handler.GetUserByIdHandler, code: 0, msg: success. elapse: 1.3442ms

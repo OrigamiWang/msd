@@ -3,7 +3,7 @@ module github.com/OrigamiWang/msd/gorm-demo
 go 1.20
 
 require (
-	github.com/OrigamiWang/msd/micro v0.0.0-20240128090455-0df3fb4619c2
+	github.com/OrigamiWang/msd/micro v0.0.0-20240128123501-95dbc69f8a5f
 	github.com/gin-gonic/gin v1.9.1
 	gorm.io/driver/mysql v1.5.2
 	gorm.io/gorm v1.25.6
