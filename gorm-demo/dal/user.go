@@ -3,12 +3,26 @@ package dal
 import (
 	"github.com/OrigamiWang/msd/gorm-demo/model/dao"
 	"github.com/OrigamiWang/msd/gorm-demo/model/dto"
+	dao2 "github.com/OrigamiWang/msd/micro/model/dao"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
+	"gorm.io/gorm"
 )
+
+var DATABSE_KEY = "sample_mysql1"
+
+var conn *gorm.DB
+
+func init() {
+	var err error
+	conn, err = dao2.MySQL(DATABSE_KEY)
+	if err != nil {
+		logutil.Error("can not connect mysql, database_key: %v, err: %v", DATABSE_KEY, err)
+	}
+}
 
 func GetUserById(id string) (*dao.UserDao, error) {
 	user := &dao.UserDao{}
-	result := Db.Where("id = ?", id).First(user)
+	result := conn.Where("id = ?", id).First(user)
 	if result.Error != nil {
 		return nil, result.Error
 	}
@@ -17,7 +31,7 @@ func GetUserById(id string) (*dao.UserDao, error) {
 
 func GetAllUser() (*[]dao.UserDao, error) {
 	users := &[]dao.UserDao{}
-	result := Db.Find(users)
+	result := conn.Find(users)
 	if result.Error != nil {
 		return nil, result.Error
 	}
@@ -25,7 +39,7 @@ func GetAllUser() (*[]dao.UserDao, error) {
 }
 
 func UpdateUser(id string, userReq *dto.UserReq) (*dao.UserDao, error) {
-	tx := Db.Begin()
+	tx := conn.Begin()
 	if tx.Error != nil {
 		return nil, tx.Error
 	}
@@ -50,7 +64,7 @@ func UpdateUser(id string, userReq *dto.UserReq) (*dao.UserDao, error) {
 }
 
 func AddUser(userReq *dto.UserReq) (*dao.UserDao, error) {
-	tx := Db.Begin()
+	tx := conn.Begin()
 	user := &dao.UserDao{
 		Name: userReq.Name,
 		Age:  userReq.Age,
