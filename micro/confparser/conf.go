@@ -26,12 +26,14 @@ type Config struct {
 
 func init() {
 	Conf = LoadConf()
-	if Conf == nil {
-		logutil.Error("init conf failed")
-	}
 }
 
 func LoadConf() *Config {
+	fileName := "conf.yml"
+	if _, err := os.Stat(fileName); err != nil {
+		logutil.Warn("config file not exist, fileName: %v", fileName)
+		return nil
+	}
 	dataBytes, err := os.ReadFile("conf.yml")
 	if err != nil {
 		logutil.Error("load conf failed, err: %v", err)
