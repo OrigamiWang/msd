@@ -14,8 +14,21 @@ func InitMysql(db *confparser.Database) *gorm.DB {
 		SkipDefaultTransaction: true,
 	})
 	if err != nil {
-		logutil.Error("mysql init failed, err: %v", err)
+		logutil.Error("Open MySQL connection failed. key: %v", db.Key)
 		return nil
 	}
+
+	sqlDb, _ := gormDb.DB()
+
+	// 通过底层的sqlDb去设置更细粒度的配置
+	maxIdle := db.ExtInt("maxIdle", 0)
+	sqlDb.SetMaxOpenConns(maxIdle)
+
+	maxOpen := db.ExtInt("maxOpen", 8)
+	sqlDb.SetMaxOpenConns(maxOpen)
+
+	lifetime := db.ExtDuration("maxConnLifetime", "0s")
+	sqlDb.SetConnMaxLifetime(lifetime)
+
 	return gormDb
 }
