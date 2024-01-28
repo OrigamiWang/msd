@@ -96,6 +96,28 @@ func find(v interface{}, key interface{}) (res interface{}, success, isFinal boo
 	return
 }
 
+// shortcut of Conf.ExtString
+func ExtString(keys string, defaultVal ...interface{}) string {
+	return Conf.ExtString(keys, defaultVal...)
+}
+
+func ExtInt(key string, defaultVal ...interface{}) int {
+	return Conf.ExtInt(key, defaultVal...)
+}
+func ExtFloat32(key string, defaultVal ...interface{}) float32 {
+	return Conf.ExtFloat32(key, defaultVal...)
+}
+func ExtFloat64(key string, defaultVal ...interface{}) float64 {
+	return Conf.ExtFloat64(key, defaultVal...)
+}
+func ExtBool(key string, defaultVal ...interface{}) bool {
+	return Conf.ExtBool(key, defaultVal...)
+}
+
+func ExtDuration(key string, defaultVal ...interface{}) time.Duration {
+	return Conf.ExtDuration(key, defaultVal...)
+}
+
 func (c *Config) ExtString(keys string, defaultVal ...interface{}) string {
 	return c.Ext(keys, defaultVal...).(string)
 }
