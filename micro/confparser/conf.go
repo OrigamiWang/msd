@@ -96,7 +96,7 @@ func find(v interface{}, key interface{}) (res interface{}, success, isFinal boo
 	return
 }
 
-// shortcut of Conf.ExtString
+// ExtString shortcut of Conf.ExtString
 func ExtString(keys string, defaultVal ...interface{}) string {
 	return Conf.ExtString(keys, defaultVal...)
 }

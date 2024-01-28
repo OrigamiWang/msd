@@ -9,14 +9,9 @@ databases:
     user: root
     password: "abc123"
     ext:
-      testStruct:
-        Key1: vv1
-        Key2: vv2
-      key: Hello Word!
-      key2: values2
-      key3Int: 3
-      key4Float: 3.1
-      key5Bool: true
+      maxIdle: 0
+      maxOpen: 8
+      maxConnLifetime: 0s
 
   - key: sample_redis1
     type: redis
@@ -25,3 +20,15 @@ databases:
     port: 6379
     user: root
     password: ""
+
+
+ext:
+
+  testStruct:
+    Key1: vv1
+    Key2: vv2
+  key: Hello Word!
+  key2: values2
+  key3Int: 3
+  key4Float: 3.1
+  key5Bool: true
