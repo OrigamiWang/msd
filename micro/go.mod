@@ -5,6 +5,9 @@ go 1.20
 require (
 	github.com/gin-gonic/gin v1.9.1
 	github.com/jeanphorn/log4go v0.0.0-20231225120528-d93eb9001e51
+	gopkg.in/yaml.v3 v3.0.1
+	gorm.io/driver/mysql v1.5.2
+	gorm.io/gorm v1.25.6
 )
 
 require (
@@ -35,7 +38,4 @@ require (
 	golang.org/x/sys v0.16.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/protobuf v1.30.0 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
-	gorm.io/driver/mysql v1.5.2 // indirect
-	gorm.io/gorm v1.25.6 // indirect
 )
