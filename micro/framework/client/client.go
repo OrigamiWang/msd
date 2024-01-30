@@ -26,8 +26,8 @@ func init() {
 }
 
 // PostWithHead is a shortcut of func(hc *HttpClient) PostWithHead(){}
-func RequestWithHead(method, host, uri string, header http.Header, param interface{}, resp *http.Response) (interface{}, error) {
-	return HC.RequestWithHead(method, host, uri, header, param, resp)
+func RequestWithHead(method, host, uri string, header http.Header, param interface{}) (interface{}, error) {
+	return HC.RequestWithHead(method, host, uri, header, param)
 }
 
 func getBytes(data interface{}) (result []byte, err error) {
@@ -46,7 +46,7 @@ func getBytes(data interface{}) (result []byte, err error) {
 	return
 }
 
-func do(method, url string, header http.Header, param interface{}, resp *http.Response) (interface{}, error) {
+func do(method, url string, header http.Header, param interface{}) (interface{}, error) {
 	var err error
 	requestBody, err := getBytes(param)
 	if err != nil {
@@ -60,7 +60,7 @@ func do(method, url string, header http.Header, param interface{}, resp *http.Re
 		return nil, err
 	}
 	req.Header = header
-	resp, err = HC.Client.Do(req)
+	resp, err := HC.Client.Do(req)
 	if err != nil {
 		logutil.Error("client do request failed")
 		return nil, err
@@ -78,11 +78,11 @@ func do(method, url string, header http.Header, param interface{}, resp *http.Re
 	}
 	return result, nil
 }
-func (hc *HttpClient) RequestWithHead(method, host, uri string, header http.Header, param interface{}, resp *http.Response) (interface{}, error) {
+func (hc *HttpClient) RequestWithHead(method, host, uri string, header http.Header, param interface{}) (interface{}, error) {
 	logutil.Info("ready to post to host: %v, uri: %v", host, uri)
 	url := host + uri
 	if !strings.HasPrefix(url, "http://") || !strings.HasPrefix(url, "https://") {
 		url = fmt.Sprintf("http://%s", url)
 	}
-	return do(method, url, header, param, resp)
+	return do(method, url, header, param)
 }
