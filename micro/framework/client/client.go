@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"strings"
 
@@ -25,7 +26,7 @@ func init() {
 }
 
 // PostWithHead is a shortcut of func(hc *HttpClient) PostWithHead(){}
-func RequestWithHead(method, host, uri string, header http.Header, param interface{}, resp *http.Response) error {
+func RequestWithHead(method, host, uri string, header http.Header, param interface{}, resp *http.Response) (interface{}, error) {
 	return HC.RequestWithHead(method, host, uri, header, param, resp)
 }
 
@@ -45,28 +46,39 @@ func getBytes(data interface{}) (result []byte, err error) {
 	return
 }
 
-func do(method, url string, header http.Header, param interface{}, resp *http.Response) error {
+func do(method, url string, header http.Header, param interface{}, resp *http.Response) (interface{}, error) {
 	var err error
 	requestBody, err := getBytes(param)
 	if err != nil {
 		logutil.Error("ready to post to [%v], data: [%+v]", url, param)
-		return err
+		return nil, err
 	}
 
 	req, err := http.NewRequest(method, url, bytes.NewBuffer(requestBody))
 	if err != nil {
 		logutil.Error("creat request failed")
-		return err
+		return nil, err
 	}
 	req.Header = header
 	resp, err = HC.Client.Do(req)
 	if err != nil {
 		logutil.Error("client do request failed")
-		return err
+		return nil, err
 	}
-	return nil
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		logutil.Error("read resp.Body failed, err: %v", err)
+		return nil, err
+	}
+	defer resp.Body.Close()
+	var result map[string]interface{}
+	err = json.Unmarshal(body, &result)
+	if err != nil {
+		logutil.Error("unmarshal response to struct failed, err: %v", err)
+	}
+	return result, nil
 }
-func (hc *HttpClient) RequestWithHead(method, host, uri string, header http.Header, param interface{}, resp *http.Response) error {
+func (hc *HttpClient) RequestWithHead(method, host, uri string, header http.Header, param interface{}, resp *http.Response) (interface{}, error) {
 	logutil.Info("ready to post to host: %v, uri: %v", host, uri)
 	url := host + uri
 	if !strings.HasPrefix(url, "http://") || !strings.HasPrefix(url, "https://") {
