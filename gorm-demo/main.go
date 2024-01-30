@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/OrigamiWang/msd/gorm-demo/handler"
 	"github.com/OrigamiWang/msd/micro/framework"
 	mw "github.com/OrigamiWang/msd/micro/midware"
@@ -25,5 +26,5 @@ func main() {
 		r.PUT("/user/:id", mw.PostHandler(handler.UpdateUserHandler, handler.UserBinder))
 		r.POST("/user", mw.PostHandler(handler.AddUserHandler, handler.UserBinder))
 	}
-	root.Run()
+	root.Run("localhost:8081")
 }

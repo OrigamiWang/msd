@@ -4,10 +4,10 @@ databases:
   - key: sample_mysql1
     type: mysql
     name: msd
-    host: 127.0.0.1
+    host: 9.134.75.180
     port: 3306
-    user: root
-    password: "abc123"
+    user: origami
+    password: "Zhanwang123_"
     ext:
       maxIdle: 0
       maxOpen: 8
