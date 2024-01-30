@@ -25,8 +25,8 @@ func init() {
 }
 
 // PostWithHead is a shortcut of func(hc *HttpClient) PostWithHead(){}
-func PostWithHead(host, uri string, header http.Header, param interface{}, resp *http.Response) error {
-	return HC.PostWithHead(host, uri, header, param, resp)
+func RequestWithHead(method, host, uri string, header http.Header, param interface{}, resp *http.Response) error {
+	return HC.RequestWithHead(method, host, uri, header, param, resp)
 }
 
 func getBytes(data interface{}) (result []byte, err error) {
