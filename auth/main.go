@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/OrigamiWang/msd/gate/handler"
+	"github.com/OrigamiWang/msd/auth/handler"
 	"github.com/OrigamiWang/msd/micro/framework"
 	mw "github.com/OrigamiWang/msd/micro/midware"
 )
@@ -18,6 +18,5 @@ func main() {
 	{
 		r.POST("/authorize", mw.PostHandler(handler.AuthorizeHandler))
 	}
-
 	root.Run("0.0.0.0:8082")
 }

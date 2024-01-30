@@ -1,4 +1,4 @@
-package main
+package cli
 
 import (
 	mg "github.com/OrigamiWang/msd/manage/facade"
