@@ -13,7 +13,13 @@ func TestHandler(c *gin.Context, req interface{}) (resp interface{}, err errx.Er
 	if e != nil {
 		logutil.Error("err: %v", err)
 	} else {
-		logutil.Info("result: %v", result)
+		res := result.(map[string]interface{})
+		// json默认解码为float64
+		if res["code"].(float64) == 0 {
+			logutil.Info(res["data"])
+		} else {
+			logutil.Warn("something wrong")
+		}
 	}
 	return nil, nil
 }
