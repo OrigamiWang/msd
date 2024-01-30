@@ -66,11 +66,11 @@ func do(method, url string, header http.Header, param interface{}, resp *http.Re
 	}
 	return nil
 }
-func (hc *HttpClient) PostWithHead(host, uri string, header http.Header, param interface{}, resp *http.Response) error {
+func (hc *HttpClient) RequestWithHead(method, host, uri string, header http.Header, param interface{}, resp *http.Response) error {
 	logutil.Info("ready to post to host: %v, uri: %v", host, uri)
 	url := host + uri
 	if !strings.HasPrefix(url, "http://") || !strings.HasPrefix(url, "https://") {
 		url = fmt.Sprintf("http://%s", url)
 	}
-	return do("POST", url, header, param, resp)
+	return do(method, url, header, param, resp)
 }
