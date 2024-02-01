@@ -13,6 +13,7 @@ func main() {
 	r := root.Group("/")
 	d := root.Group("/debug")
 	{
+		d.GET("/getuser", mw.PostHandler(handler.TestHandler))
 		d.GET("/test", mw.PostHandler(handler.TestHandler))
 	}
 	{

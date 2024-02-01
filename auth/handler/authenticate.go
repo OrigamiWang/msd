@@ -6,8 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// 测试cli接口
-func TestHandler(c *gin.Context, req interface{}) (resp interface{}, err errx.ErrX) {
-	logutil.Info("call test handler...")
+func AuthenticateHandler(c *gin.Context, req interface{}) (resp interface{}, err errx.ErrX) {
+	logutil.Info("authenticate...")
 	return nil, nil
 }

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/OrigamiWang/msd/gorm-demo/handler"
+	"github.com/OrigamiWang/msd/manage/handler"
 	"github.com/OrigamiWang/msd/micro/framework"
 	mw "github.com/OrigamiWang/msd/micro/midware"
 )

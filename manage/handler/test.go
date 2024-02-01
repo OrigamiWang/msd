@@ -16,9 +16,8 @@ func Test(c *gin.Context, req interface{}) (resp interface{}, err errx.ErrX) {
 
 func testPostWithHead() interface{} {
 	header := http.Header{}
-	resp := &http.Response{}
 	header.Set("Content-Type", "application/json")
-	result, err := client.RequestWithHead(httpmethod.GET, "localhost:8081", "/user/1", header, nil, resp)
+	result, err := client.RequestWithHead(httpmethod.GET, "localhost:8081", "/user/1", header, nil)
 	if err != nil {
 		logutil.Error("request with head failed, err: %v", err)
 		return nil
