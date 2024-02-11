@@ -18,6 +18,7 @@ func main() {
 	}
 	{
 		r.POST("/authorize", mw.PostHandler(handler.AuthorizeHandler, handler.AuthorizeBinder))
+		r.POST("/authenticate", mw.PostHandler(handler.AuthenticateHandler, handler.AuthenticateBinder))
 	}
 	root.Run("0.0.0.0:8082")
 }

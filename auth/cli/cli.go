@@ -1,9 +1,5 @@
 package cli
 
-import (
-	mg "github.com/OrigamiWang/msd/manage/facade"
-)
-
-var (
-	Manage mg.IFUser = &mg.UserManageFacade{}
-)
+//var (
+//	Manage mg.IFUser = &mg.UserManageFacade{}
+//)

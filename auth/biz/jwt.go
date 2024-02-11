@@ -1,6 +1,7 @@
 package biz
 
 import (
+	"fmt"
 	"github.com/OrigamiWang/msd/micro/util/jwt"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
 	"time"
@@ -18,16 +19,16 @@ func Authorize(uid int, uname string) string {
 }
 
 // 鉴权
-func Authenticate(j string) (uid int, uname string) {
+func Authenticate(j string) (uid int, uname string, err error) {
 	jwtPayload, err := jwt.DecodeJwt(j)
 	if err != nil {
 		logutil.Error("decode jwt failed, error: %v", err)
-		return -1, ""
+		return -1, "", fmt.Errorf("decode jwt failed, error: %v", err)
 	}
 	// time has expired
 	if jwtPayload.Exp.Before(time.Now()) {
 		logutil.Warn("jwt token has expired")
-		return -1, ""
+		return -1, "", fmt.Errorf("jwt token has expired")
 	}
-	return jwtPayload.Uid, jwtPayload.Uname
+	return jwtPayload.Uid, jwtPayload.Uname, nil
 }
