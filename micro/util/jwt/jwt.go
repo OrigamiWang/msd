@@ -80,7 +80,7 @@ func DecodeJwt(jwt string) (*JwtPayload, error) {
 	err := decodeHeader(headerBase64)
 	if err != nil {
 		logutil.Error("decode jwt header base64 failed, err: %v", err)
-		return nil, nil
+		return nil, fmt.Errorf("decode jwt header base64 failed, err: %v", err)
 	}
 	// payload
 	payloadBase64 := arr[1]
@@ -88,7 +88,7 @@ func DecodeJwt(jwt string) (*JwtPayload, error) {
 	err = decodePayload(payloadBase64, jwtPayload)
 	if err != nil {
 		logutil.Error("decode jwt payload failed, err: %v", err)
-		return nil, nil
+		return nil, fmt.Errorf("decode jwt payload failed, err: %v", err)
 	}
 	// signature
 	signature := arr[2]
@@ -96,8 +96,8 @@ func DecodeJwt(jwt string) (*JwtPayload, error) {
 	if checkSignature(data, signature) {
 		logutil.Info("signature is valid")
 	} else {
-		logutil.Info("signature not is valid")
-		return nil, nil
+		logutil.Info("signature is not valid")
+		return nil, fmt.Errorf("signature is not valid")
 	}
 	return jwtPayload, nil
 }
