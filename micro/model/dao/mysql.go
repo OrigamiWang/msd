@@ -9,6 +9,7 @@ import (
 )
 
 func InitMysql(db *confparser.Database) *gorm.DB {
+	fmt.Println("init mysql...")
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/msd?charset=utf8mb4&parseTime=True&loc=Local", db.User, db.Password, db.Host, db.Port)
 	gormDb, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		SkipDefaultTransaction: true,

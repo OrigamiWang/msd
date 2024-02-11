@@ -1,6 +1,7 @@
 package dao
 
 import (
+	"fmt"
 	"github.com/OrigamiWang/msd/micro/confparser"
 	"github.com/OrigamiWang/msd/micro/const/db"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
@@ -14,6 +15,7 @@ func init() {
 	InitDb()
 }
 func InitDb() {
+	fmt.Println("init db...")
 	dbs := confparser.Conf.Dbs
 	for _, _db := range dbs {
 		switch _db.Type {
@@ -35,6 +37,7 @@ func InitDb() {
 
 // MySQL 返回mysql数据库
 func MySQL(key string) (mysql *gorm.DB, err error) {
+	fmt.Println("mysql...")
 	if v, ok := dbConns[key]; ok {
 		return v.(*gorm.DB), nil
 	}
