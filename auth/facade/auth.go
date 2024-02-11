@@ -9,8 +9,8 @@ import (
 )
 
 type IFAuth interface {
-	Authorize() (interface{}, error)
-	Authenticate() (interface{}, error)
+	Authorize(uid int, uname string) (interface{}, error)
+	Authenticate(jwtToken string) (interface{}, error)
 }
 
 type AuthFacade struct {
