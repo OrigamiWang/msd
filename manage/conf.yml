@@ -4,14 +4,12 @@ databases:
   - key: sample_mysql1
     type: mysql
     name: msd
-    host: 9.134.75.180
+    host: 127.0.0.1
     port: 3306
-    user: origami
-    password: "Zhanwang123_"
+    user: root
+    password: "abc123"
     ext:
-      maxIdle: 0
-      maxOpen: 8
-      maxConnLifetime: 0s
+      maxPoolSize: 100
 
   - key: sample_redis1
     type: redis

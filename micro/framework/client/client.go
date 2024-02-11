@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/OrigamiWang/msd/micro/auth"
 	"io"
 	"net/http"
 	"strings"
@@ -28,6 +29,11 @@ func init() {
 // RequestWithHead is a shortcut of func(hc *HttpClient) RequestWithHead(){}
 func RequestWithHead(method, host, uri string, header http.Header, param interface{}) (interface{}, error) {
 	return HC.RequestWithHead(method, host, uri, header, param)
+}
+
+// RequestWithJwtTokenmethod is a shortcut of func(hc *HttpClient) RequestWithJwtTokenmethod(){}
+func RequestWithJwtTokenmethod(method, host, uri string, header http.Header, param interface{}) (interface{}, error) {
+	return HC.RequestWithJwtToken(method, host, uri, header, param)
 }
 
 func getBytes(data interface{}) (result []byte, err error) {
@@ -80,6 +86,38 @@ func do(method, url string, header http.Header, param interface{}) (interface{},
 }
 func (hc *HttpClient) RequestWithHead(method, host, uri string, header http.Header, param interface{}) (interface{}, error) {
 	logutil.Info("ready to post to host: %v, uri: %v", host, uri)
+	url := host + uri
+	if !strings.HasPrefix(url, "http://") || !strings.HasPrefix(url, "https://") {
+		url = fmt.Sprintf("http://%s", url)
+	}
+	return do(method, url, header, param)
+}
+
+// requestHeader:
+//
+//	{
+//		  Authorization: 'Bearer JwtToken'
+//	}
+func (hc *HttpClient) RequestWithJwtToken(method, host, uri string, header http.Header, param interface{}) (interface{}, error) {
+	logutil.Info("ready to post to host: %v, uri: %v", host, uri)
+	authorization := header.Get("Authorization")
+	if authorization == "" {
+		logutil.Error("the authorization is nil")
+		return nil, fmt.Errorf("the authorization is nil")
+	}
+	arr := strings.Split(authorization, " ")
+	// invalid
+	if arr == nil || len(arr) != 2 || arr[0] != "Bearer" {
+		logutil.Error("invalid request")
+		return nil, fmt.Errorf("invalid request")
+	}
+	jwtToken := arr[1]
+	uid, uname, err := auth.Authenticate(jwtToken)
+	if err != nil {
+		logutil.Error("cli. jwt token authenticate failed, err: %v", err)
+		return nil, err
+	}
+	logutil.Info("user authenticate success, uid: %v, uname: %v", uid, uname)
 	url := host + uri
 	if !strings.HasPrefix(url, "http://") || !strings.HasPrefix(url, "https://") {
 		url = fmt.Sprintf("http://%s", url)

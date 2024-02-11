@@ -1,4 +1,4 @@
-package biz
+package auth
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-// 授权
+// Authorize 授权
 func Authorize(uid int, uname string) string {
 	jwtPayload := &jwt.JwtPayload{
 		Uid:   uid,
@@ -18,7 +18,7 @@ func Authorize(uid int, uname string) string {
 	return j
 }
 
-// 鉴权
+// Authenticate 鉴权
 func Authenticate(j string) (uid int, uname string, err error) {
 	jwtPayload, err := jwt.DecodeJwt(j)
 	if err != nil {

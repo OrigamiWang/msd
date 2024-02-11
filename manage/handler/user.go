@@ -42,6 +42,7 @@ func UpdateUserHandler(c *gin.Context, req interface{}) (resp interface{}, err e
 	return resp, nil
 }
 
+// register
 func AddUserHandler(c *gin.Context, req interface{}) (resp interface{}, err errx.ErrX) {
 	userReq := req.(*dto.UserReq)
 	resp, e := dal.AddUser(userReq)
