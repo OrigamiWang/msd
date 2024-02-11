@@ -41,7 +41,7 @@ func encodePayload(payload *JwtPayload) string {
 		return ""
 	}
 	payloadBase64 := base64.EncodeBase64(payloadByte)
-	return payloadBase64
+	return strings.TrimRight(payloadBase64, "=")
 }
 
 func encodeSignature(data string) string {
@@ -132,4 +132,3 @@ func decodePayload(payloadBase64 string, jwtPayload *JwtPayload) error {
 func checkSignature(data, rawSignature string) bool {
 	return rawSignature == encodeSignature(data)
 }
-
