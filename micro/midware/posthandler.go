@@ -60,21 +60,23 @@ func PostHandlerWithJwt(handlerfunc PostHandlerFunc, binder ...HandlerReqBinder)
 		start := time.Now()
 		funcName := runtime.FuncForPC(reflect.ValueOf(handlerfunc).Pointer()).Name()
 
+		// check the jwt token
+		// Authorization: 'Bearer JwtToken'
+		authorization := c.GetHeader("Authorization")
+		m, e := checkJwt(authorization)
+		if e != nil {
+			logutil.Error("check jwt failed, err: %v", e)
+			c.JSON(http.StatusOK, &model.Response{Code: errcode.WrongJwt, Ts: fmt.Sprintf("%v", time.Now().Unix()), Msg: "Wrong jwt"})
+			return
+		}
+		uid := m["uid"].(int)
+		uname := m["uname"].(string)
+		logutil.Info("check jwt success, uid: %v, uname: %v", uid, uname)
+
 		var resp interface{}
 		var err errx.ErrX
 		if len(binder) > 0 {
-			// check the jwt token
-			// Authorization: 'Bearer JwtToken'
-			authorization := c.GetHeader("Authorization")
-			m, err := checkJwt(authorization)
-			if err != nil {
-				logutil.Error("check jwt failed, err: %v", err)
-				c.JSON(http.StatusOK, &model.Response{Code: errcode.WrongJwt, Ts: fmt.Sprintf("%v", time.Now().Unix()), Msg: "Wrong jwt"})
-				return
-			}
-			uid := m["uid"].(int)
-			uname := m["uname"].(string)
-			logutil.Info("check jwt success, uid: %v, uname: %v", uid, uname)
+
 			// get request body
 			req := binder[0]()
 			bindErr := c.BindJSON(req)
