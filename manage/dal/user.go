@@ -1,8 +1,8 @@
 package dal
 
 import (
-	"github.com/OrigamiWang/msd/gorm-demo/model/dao"
-	"github.com/OrigamiWang/msd/gorm-demo/model/dto"
+	"github.com/OrigamiWang/msd/manage/model/dao"
+	"github.com/OrigamiWang/msd/manage/model/dto"
 	dao2 "github.com/OrigamiWang/msd/micro/model/dao"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
 	"gorm.io/gorm"

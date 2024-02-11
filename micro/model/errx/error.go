@@ -40,3 +40,14 @@ func IsError(e interface{}) bool {
 	_, ok := e.(error)
 	return ok
 }
+func NewErr(err error, code ...int) ErrX {
+	if err == nil {
+		return nil
+	}
+
+	c := -1
+	if len(code) > 0 {
+		c = code[0]
+	}
+	return &errX{c, err.Error()}
+}

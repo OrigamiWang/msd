@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"github.com/OrigamiWang/msd/gorm-demo/dal"
-	"github.com/OrigamiWang/msd/gorm-demo/model/dto"
+	"github.com/OrigamiWang/msd/manage/dal"
+	"github.com/OrigamiWang/msd/manage/model/dto"
 	"github.com/OrigamiWang/msd/micro/model/errx"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
 	"github.com/gin-gonic/gin"

@@ -1,14 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"github.com/OrigamiWang/msd/gorm-demo/handler"
+	"github.com/OrigamiWang/msd/manage/handler"
 	"github.com/OrigamiWang/msd/micro/framework"
 	mw "github.com/OrigamiWang/msd/micro/midware"
 )
 
 func main() {
-	fmt.Println("Hello, world.")
 	root := framework.NewGinWeb()
 	r := root.Group("/")
 	// pprof 性能监
@@ -25,5 +23,5 @@ func main() {
 		r.PUT("/user/:id", mw.PostHandler(handler.UpdateUserHandler, handler.UserBinder))
 		r.POST("/user", mw.PostHandler(handler.AddUserHandler, handler.UserBinder))
 	}
-	root.Run()
+	root.Run("localhost:8081")
 }

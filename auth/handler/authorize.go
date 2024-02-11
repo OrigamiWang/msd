@@ -6,7 +6,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Test(c *gin.Context, req interface{}) (resp interface{}, err errx.ErrX) {
-	logutil.Info("114514")
+func AuthorizeBinder() interface{} {
+	return nil
+}
+
+func AuthorizeHandler(c *gin.Context, req interface{}) (resp interface{}, err errx.ErrX) {
+	logutil.Info("authorize...")
 	return nil, nil
 }
