@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/OrigamiWang/msd/manage v0.0.0-20240130111522-d8b6908a5849
-	github.com/OrigamiWang/msd/micro v0.0.0-20240130105659-1794d1ba4627
+	github.com/OrigamiWang/msd/micro v0.0.0-20240211032943-f4285c037cc3
 	github.com/gin-gonic/gin v1.9.1
 )
 

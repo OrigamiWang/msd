@@ -17,7 +17,7 @@ func main() {
 		d.GET("/test", mw.PostHandler(handler.TestHandler))
 	}
 	{
-		r.POST("/authorize", mw.PostHandler(handler.AuthorizeHandler))
+		r.POST("/authorize", mw.PostHandler(handler.AuthorizeHandler, handler.AuthorizeBinder))
 	}
 	root.Run("0.0.0.0:8082")
 }
