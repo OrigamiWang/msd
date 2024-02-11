@@ -1,4 +1,4 @@
-package main
+package jwt
 
 import (
 	"crypto/hmac"
@@ -132,13 +132,4 @@ func decodePayload(payloadBase64 string, jwtPayload *JwtPayload) error {
 func checkSignature(data, rawSignature string) bool {
 	return rawSignature == encodeSignature(data)
 }
-func main() {
-	payload := JwtPayload{
-		Uid:   1,
-		Uname: "Origami",
-		Exp:   time.Now().Add(time.Hour * 24 * 365), // one year to expire
-	}
-	jwt := EncodeJwt(&payload)
-	fmt.Println(jwt)
-	DecodeJwt(jwt)
-}
+
