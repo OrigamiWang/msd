@@ -3,7 +3,6 @@ package jwt
 import (
 	"crypto/hmac"
 	"crypto/sha256"
-	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"strings"
@@ -48,7 +47,8 @@ func encodeSignature(data string) string {
 	hmacHasher := hmac.New(sha256.New, []byte(SECRET))
 	hmacHasher.Write([]byte(data))
 	hmacHashed := hmacHasher.Sum(nil)
-	signature := hex.EncodeToString(hmacHashed)
+	signature := base64.EncodeBase64(hmacHashed)
+	signature = strings.TrimRight(signature, "=") // 移除 Base64 编码的尾部填充字符
 	return signature
 }
 
@@ -94,41 +94,42 @@ func DecodeJwt(jwt string) (*JwtPayload, error) {
 	signature := arr[2]
 	data := headerBase64 + "." + payloadBase64
 	if checkSignature(data, signature) {
-		fmt.Println("signature is valid")
+		logutil.Info("signature is valid")
 	} else {
-		fmt.Println("signature is not valid")
+		logutil.Info("signature not is valid")
 		return nil, nil
 	}
 	return jwtPayload, nil
 }
 
 func decodeHeader(headerBase64 string) error {
-	headerBase, error := base64.DecodeBase64(headerBase64)
-	if error != nil {
-		logutil.Error("decode jwt header base64 failed, err: %v", error)
-		return error
+	headerBase, err := base64.DecodeBase64(headerBase64)
+	if err != nil {
+		logutil.Error("decode jwt header base64 failed, err: %v", err)
+		return err
 	}
 	header := map[string]string{}
-	error = json.Unmarshal(headerBase, &header)
-	if error != nil {
-		logutil.Error("jwt header json unmarshal failed, err: %v", error)
-		return error
+	err = json.Unmarshal(headerBase, &header)
+	if err != nil {
+		logutil.Error("jwt header json unmarshal failed, err: %v", err)
+		return err
 	}
 	return nil
 }
 func decodePayload(payloadBase64 string, jwtPayload *JwtPayload) error {
-	payloadBase, error := base64.DecodeBase64(payloadBase64)
-	if error != nil {
-		logutil.Error("decode jwt payload base64 failed, err: %v", error)
-		return error
+	payloadBase, err := base64.DecodeBase64(payloadBase64)
+	if err != nil {
+		logutil.Error("decode jwt payload base64 failed, err: %v", err)
+		return err
 	}
-	error = json.Unmarshal(payloadBase, jwtPayload)
-	if error != nil {
-		logutil.Error("jwt payload json unmarshal failed, err: %v", error)
-		return error
+	err = json.Unmarshal(payloadBase, jwtPayload)
+	if err != nil {
+		logutil.Error("jwt payload json unmarshal failed, err: %v", err)
+		return err
 	}
 	return nil
 }
+
 func checkSignature(data, rawSignature string) bool {
 	return rawSignature == encodeSignature(data)
 }
