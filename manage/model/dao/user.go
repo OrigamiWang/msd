@@ -5,6 +5,7 @@ type UserDao struct {
 	Name string
 	Age  int
 	Sex  string
+	Pswd string
 }
 
 func (UserDao) TableName() string {

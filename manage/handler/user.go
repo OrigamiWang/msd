@@ -3,6 +3,7 @@ package handler
 import (
 	"github.com/OrigamiWang/msd/manage/dal"
 	"github.com/OrigamiWang/msd/manage/model/dto"
+	"github.com/OrigamiWang/msd/micro/const/errcode"
 	"github.com/OrigamiWang/msd/micro/model/errx"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
 	"github.com/gin-gonic/gin"
@@ -45,7 +46,15 @@ func UpdateUserHandler(c *gin.Context, req interface{}) (resp interface{}, err e
 // register
 func AddUserHandler(c *gin.Context, req interface{}) (resp interface{}, err errx.ErrX) {
 	userReq := req.(*dto.UserReq)
-	resp, e := dal.AddUser(userReq)
+	if userReq.Age <= 0 || userReq.Sex == "" {
+		return nil, errx.New(errcode.WrongArgs, "wrong args")
+	}
+	user, e := dal.GetUserByName(userReq.Name)
+	if user != nil && e == nil {
+		// name can not be repeated
+		return nil, errx.New(errcode.WrongArgs, "the name can not be repeated")
+	}
+	resp, e = dal.AddUser(userReq)
 	if e != nil {
 		logutil.Error("mysql. add user failed, err: %v", e)
 		return nil, nil

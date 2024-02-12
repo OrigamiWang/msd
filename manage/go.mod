@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/OrigamiWang/msd/auth v0.0.0-20240211075506-e08a5eed0951
-	github.com/OrigamiWang/msd/micro v0.0.0-20240211084704-659a2f13c924
+	github.com/OrigamiWang/msd/micro v0.0.0-20240212070304-cd3d5de2bcb0
 	github.com/gin-gonic/gin v1.9.1
 	gorm.io/gorm v1.25.6
 )

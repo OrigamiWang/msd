@@ -3,6 +3,7 @@ package dal
 import (
 	"github.com/OrigamiWang/msd/manage/model/dao"
 	"github.com/OrigamiWang/msd/manage/model/dto"
+	"github.com/OrigamiWang/msd/micro/auth/crypto"
 	dao2 "github.com/OrigamiWang/msd/micro/model/dao"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
 	"gorm.io/gorm"
@@ -43,10 +44,12 @@ func UpdateUser(id string, userReq *dto.UserReq) (*dao.UserDao, error) {
 	if tx.Error != nil {
 		return nil, tx.Error
 	}
+	encodedPswd := crypto.Md5Encode(userReq.Pswd)
 	user := &dao.UserDao{
 		Name: userReq.Name,
 		Age:  userReq.Age,
 		Sex:  userReq.Sex,
+		Pswd: encodedPswd,
 	}
 	err := tx.Model(&dao.UserDao{}).Where("id = ?", id).Updates(user).Error
 	if err != nil {
@@ -65,10 +68,12 @@ func UpdateUser(id string, userReq *dto.UserReq) (*dao.UserDao, error) {
 
 func AddUser(userReq *dto.UserReq) (*dao.UserDao, error) {
 	tx := conn.Begin()
+	encodedPswd := crypto.Md5Encode(userReq.Pswd)
 	user := &dao.UserDao{
 		Name: userReq.Name,
 		Age:  userReq.Age,
 		Sex:  userReq.Sex,
+		Pswd: encodedPswd,
 	}
 	err := tx.Model(&dao.UserDao{}).Create(user).Error
 	if err != nil {
@@ -81,5 +86,14 @@ func AddUser(userReq *dto.UserReq) (*dao.UserDao, error) {
 		return nil, err
 	}
 	tx.Commit()
+	return user, nil
+}
+
+func GetUserByName(name string) (*dao.UserDao, error) {
+	user := &dao.UserDao{}
+	result := conn.Where("name = ?", name).First(user)
+	if result.Error != nil {
+		return nil, result.Error
+	}
 	return user, nil
 }

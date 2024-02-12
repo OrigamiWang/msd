@@ -18,10 +18,13 @@ func main() {
 
 	}
 	{
-		r.GET("/user", mw.PostHandler(handler.GetUserListHandler))
-		r.GET("/user/:id", mw.PostHandler(handler.GetUserByIdHandler))
-		r.PUT("/user/:id", mw.PostHandler(handler.UpdateUserHandler, handler.UserBinder))
-		r.POST("/user", mw.PostHandler(handler.AddUserHandler, handler.UserBinder))
+		r.GET("/user", mw.PostHandlerWithJwt(handler.GetUserListHandler))
+		r.GET("/user/:id", mw.PostHandlerWithJwt(handler.GetUserByIdHandler))
+		r.PUT("/user/:id", mw.PostHandlerWithJwt(handler.UpdateUserHandler, handler.UserBinder))
+		// login and regiser is no need of jwt
+		r.POST("/register", mw.PostHandler(handler.AddUserHandler, handler.UserBinder))
+		r.POST("/login", mw.PostHandler(handler.LoginHandler, handler.LoginBinder))
+
 	}
 	root.Run("localhost:8081")
 }
