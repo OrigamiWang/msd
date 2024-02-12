@@ -10,13 +10,13 @@ import (
 func main() {
 	fmt.Println("conf-center")
 	root := framework.NewGinWeb()
-	//r := root.Group("/")
+	r := root.Group("/")
 	d := root.Group("/debug")
 	{
 		d.GET("/test", mw.PostHandler(handler.TestHandler))
 	}
 	{
-		//r.GET("/config/:name", mw.PostHandler())
+		r.GET("/config/:name", handler.GetConfigHandler)
 	}
-	root.Run()
+	root.Run("localhost:8084")
 }
