@@ -1,25 +1,11 @@
 package dal
 
 import (
-	"github.com/OrigamiWang/msd/manage/model/dao"
-	"github.com/OrigamiWang/msd/manage/model/dto"
+	"github.com/OrigamiWang/msd/manage2/model/dao"
+	"github.com/OrigamiWang/msd/manage2/model/dto"
 	"github.com/OrigamiWang/msd/micro/auth/crypto"
-	dao2 "github.com/OrigamiWang/msd/micro/model/dao"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
-	"gorm.io/gorm"
 )
-
-var DATABSE_KEY = "sample_mysql4"
-
-var conn *gorm.DB
-
-func init() {
-	var err error
-	conn, err = dao2.MySQL(DATABSE_KEY)
-	if err != nil {
-		logutil.Error("can not connect mysql, database_key: %v, err: %v", DATABSE_KEY, err)
-	}
-}
 
 func GetUserById(id string) (*dao.UserDao, error) {
 	user := &dao.UserDao{}

@@ -1,6 +1,6 @@
 package dal
 
-import "github.com/OrigamiWang/msd/manage/model/dao"
+import "github.com/OrigamiWang/msd/manage2/model/dao"
 
 func Login(name, pswd string) (*dao.UserDao, error) {
 	user := &dao.UserDao{}

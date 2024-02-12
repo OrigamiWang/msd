@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"github.com/OrigamiWang/msd/manage/dal"
-	"github.com/OrigamiWang/msd/manage/model/dto"
+	"github.com/OrigamiWang/msd/manage2/dal"
+	"github.com/OrigamiWang/msd/manage2/model/dto"
 	"github.com/OrigamiWang/msd/micro/const/errcode"
 	"github.com/OrigamiWang/msd/micro/model/errx"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
