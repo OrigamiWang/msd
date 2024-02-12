@@ -30,8 +30,8 @@ type Config struct {
 
 func init() {
 	// automately load local conf
-	logutil.Info("load conf...")
-	Conf = LoadConf()
+	//logutil.Info("load conf...")
+	//Conf = LoadConf()
 }
 
 func LoadConf() *Config {
@@ -52,10 +52,6 @@ func LoadConf() *Config {
 		return nil
 	}
 	return config
-}
-
-func LoadConfCenter(svcName string) *Config {
-	return nil
 }
 
 func (c *Config) Ext(keys string, defaultVal ...interface{}) interface{} {
