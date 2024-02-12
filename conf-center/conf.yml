@@ -1,7 +1,7 @@
 # 数据库配置
 # 双引号作用：支持转义、字符串类型、支持特殊字符
 databases:
-  - key: sample_mysql1
+  - key: conf-center-mysql
     type: mysql
     name: msd
     host: 127.0.0.1
