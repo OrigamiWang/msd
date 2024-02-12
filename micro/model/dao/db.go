@@ -12,11 +12,15 @@ import (
 var dbConns = make(map[string]interface{}, 0)
 
 func init() {
-	InitDb()
+	//InitDb()
 }
 func InitDb() {
 	fmt.Println("init db...")
 	dbs := confparser.Conf.Dbs
+	if dbs == nil {
+		logutil.Warn("dbs is nil")
+		return
+	}
 	for _, _db := range dbs {
 		switch _db.Type {
 		case db.MYSQL:
