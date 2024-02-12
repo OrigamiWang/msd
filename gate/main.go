@@ -12,6 +12,6 @@ func main() {
 	public := r.Group("/public")
 	// auth := r.Group("/auth")
 
-	biz.Proxy("http://localhost:8081", "/gormdemo", public)
+	biz.Proxy("http://localhost:8081", "/manage", public)
 	root.Run("0.0.0.0:8848")
 }
