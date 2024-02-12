@@ -32,5 +32,5 @@ func GetConfigHandler(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, model.Response{Ts: fmt.Sprintf("%v", time.Now().Unix()), Msg: "json unmarshal error"})
 		return
 	}
-	c.String(http.StatusOK, "%v", res)
+	c.JSON(http.StatusOK, res)
 }
