@@ -24,6 +24,8 @@ github.com/OrigamiWang/msd/micro v0.0.0-20240212125038-ac8335df4305 h1:fl4i3C4hM
 github.com/OrigamiWang/msd/micro v0.0.0-20240212125038-ac8335df4305/go.mod h1:rtSjPz0TwVYoeNeRW6lme6ZAloaCKWqdJqA5oqck0DI=
 github.com/OrigamiWang/msd/micro v0.0.0-20240212125502-0d111e6a75f3 h1:l4WNiLMsIq5nnhjP/s1w2c5QcEUYLhtGLhKM0Zrh+/c=
 github.com/OrigamiWang/msd/micro v0.0.0-20240212125502-0d111e6a75f3/go.mod h1:rtSjPz0TwVYoeNeRW6lme6ZAloaCKWqdJqA5oqck0DI=
+github.com/OrigamiWang/msd/micro v0.0.0-20240218034724-fd310474e83f h1:QRy+F6lLu+HYNVKFSQWIFWUSZPWDEp4S2V2RWWFexkU=
+github.com/OrigamiWang/msd/micro v0.0.0-20240218034724-fd310474e83f/go.mod h1:rtSjPz0TwVYoeNeRW6lme6ZAloaCKWqdJqA5oqck0DI=
 github.com/bytedance/sonic v1.5.0/go.mod h1:ED5hyg4y6t3/9Ku1R6dU/4KyJ48DZ4jPhfY1O2AihPM=
 github.com/bytedance/sonic v1.10.0-rc/go.mod h1:ElCzW+ufi8qKqNW0FY314xriJhyJhuoJ3gFZdAHF7NM=
 github.com/bytedance/sonic v1.10.2 h1:GQebETVBxYB7JGWJtLBi07OVzWwt+8dWA00gEVW2ZFE=

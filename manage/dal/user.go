@@ -30,12 +30,11 @@ func UpdateUser(id string, userReq *dto.UserReq) (*dao.UserDao, error) {
 	if tx.Error != nil {
 		return nil, tx.Error
 	}
-	encodedPswd := crypto.Md5Encode(userReq.Pswd)
 	user := &dao.UserDao{
 		Name: userReq.Name,
 		Age:  userReq.Age,
 		Sex:  userReq.Sex,
-		Pswd: encodedPswd,
+		Pswd: userReq.Pswd,
 	}
 	err := tx.Model(&dao.UserDao{}).Where("id = ?", id).Updates(user).Error
 	if err != nil {
