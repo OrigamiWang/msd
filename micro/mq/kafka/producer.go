@@ -2,10 +2,11 @@ package kafka
 
 import (
 	"context"
+	"time"
+
 	"github.com/OrigamiWang/msd/micro/const/mq"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
 	Kafka "github.com/segmentio/kafka-go"
-	"time"
 )
 
 // ProduceMsg produce message
@@ -22,10 +23,10 @@ func init() {
 		panic(err.Error())
 	}
 }
-func ProduceMsg(id int, msg string) error {
+func ProduceMsg(key string, msg string) error {
 	kafkaMsg := Kafka.Message{
-		Value:     []byte(msg),
-		Partition: id, // 假设服务ID与分区ID匹配
+		Key:   []byte(key),
+		Value: []byte(msg),
 	}
 	err := KafkaConn.SetWriteDeadline(time.Now().Add(time.Second * 10))
 	if err != nil {
