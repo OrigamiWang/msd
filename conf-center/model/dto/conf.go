@@ -1,6 +1,7 @@
 package dto
 
 type SvcConfReq struct {
-	SvcName string `json:"svc_name"`
-	Env     string `json:"env"`
+	Desc string `json:"desc"`
+	Env  string `json:"env"`
+	Conf string `json:"conf"`
 }

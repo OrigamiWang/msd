@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/OrigamiWang/msd/conf-center/dal"
 	"github.com/OrigamiWang/msd/conf-center/handler"
 	"github.com/OrigamiWang/msd/micro/confparser"
@@ -28,6 +29,7 @@ func main() {
 	}
 	{
 		r.GET("/config/:name", handler.GetConfigHandler)
+		r.PUT("/config/:name", mw.PostHandler(handler.UpdateConfigHandler, handler.ConfBinder))
 	}
-	root.Run("localhost:8084")
+	root.Run("0.0.0.0:8084")
 }

@@ -5,6 +5,7 @@ go 1.20
 require (
 	github.com/OrigamiWang/msd/micro v0.0.0-20240212125502-0d111e6a75f3
 	github.com/gin-gonic/gin v1.9.1
+	gopkg.in/yaml.v3 v3.0.1
 	gorm.io/gorm v1.25.7
 )
 
@@ -39,6 +40,5 @@ require (
 	golang.org/x/sys v0.16.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/protobuf v1.32.0 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gorm.io/driver/mysql v1.5.2 // indirect
 )

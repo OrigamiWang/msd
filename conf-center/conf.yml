@@ -1,15 +1,26 @@
 # 数据库配置
 # 双引号作用：支持转义、字符串类型、支持特殊字符
 databases:
+  # tencent PC
   - key: conf-center-mysql
     type: mysql
     name: msd
     host: 127.0.0.1
     port: 3306
-    user: root
-    password: "abc123"
+    user: origami
+    password: "Zhanwang123_"
     ext:
       maxPoolSize: 100
+  # school PC
+  # - key: conf-center-mysql
+  #   type: mysql
+  #   name: msd
+  #   host: 127.0.0.1
+  #   port: 3306
+  #   user: root
+  #   password: "abc123"
+  #   ext:
+  #     maxPoolSize: 100
 
   - key: sample_redis1
     type: redis
