@@ -2,6 +2,6 @@ package svc
 
 const (
 	MICRO       = "micro"
-	GORM_DEMO   = "gorm-demo"
+	MANAGE      = "manage"
 	CONF_CENTER = "conf-center"
 )
