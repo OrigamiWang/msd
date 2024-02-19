@@ -3,6 +3,7 @@ package handler
 import (
 	"net/http"
 
+	"github.com/OrigamiWang/msd/micro/confparser"
 	httpmethod "github.com/OrigamiWang/msd/micro/const/http"
 	"github.com/OrigamiWang/msd/micro/framework/client"
 	"github.com/OrigamiWang/msd/micro/model/errx"
@@ -12,6 +13,14 @@ import (
 
 func Test(c *gin.Context, req interface{}) (resp interface{}, err errx.ErrX) {
 	return testPostWithHead(), nil
+}
+
+func GetConfExtHandler(c *gin.Context, req interface{}) (resp interface{}, err errx.ErrX) {
+	key := c.Param("key")
+	logutil.Info("key: %s", key)
+	ext := confparser.ExtString(key)
+	c.JSON(http.StatusOK, gin.H{"ext": ext})
+	return nil, nil
 }
 
 func testPostWithHead() interface{} {

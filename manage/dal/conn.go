@@ -14,6 +14,10 @@ func InitConn() {
 	initMysqlConn()
 }
 
+func DelConn() {
+	conn = nil
+}
+
 func initMysqlConn() {
 	var err error
 	conn, err = dao2.MySQL(DATABSE_KEY)
