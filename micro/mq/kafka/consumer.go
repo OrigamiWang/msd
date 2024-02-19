@@ -31,7 +31,7 @@ func ConsumeMsg(key string) (bool, error) {
 		logutil.Error("Error reading message: %v\n", err)
 		return res, err
 	}
-	logutil.Info("key1: %s, key2: %s", string(msg.Key), key)
+	logutil.Info("consume msg, key: %s, value: %s", string(msg.Key), string(msg.Value))
 	if string(msg.Key) == key {
 		res = true
 	}
@@ -40,7 +40,6 @@ func ConsumeMsg(key string) (bool, error) {
 }
 func PollConsume(key string, stopChan <-chan struct{}, resultChan chan<- bool) {
 	for {
-		logutil.Info("polling...")
 		select {
 		case <-stopChan:
 			logutil.Info("Received stop signal. Exiting poll function.")
@@ -52,7 +51,6 @@ func PollConsume(key string, stopChan <-chan struct{}, resultChan chan<- bool) {
 				logutil.Error("Error consuming message: %v", err)
 				break
 			}
-			logutil.Info("res: %v", res)
 			resultChan <- res
 			time.Sleep(time.Second * 1)
 		}

@@ -2,6 +2,7 @@ package dao
 
 import (
 	"fmt"
+
 	"github.com/OrigamiWang/msd/micro/confparser"
 	"github.com/OrigamiWang/msd/micro/const/db"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
@@ -37,6 +38,10 @@ func InitDb() {
 			continue
 		}
 	}
+}
+
+func DelDB() {
+	dbConns = make(map[string]interface{}, 0)
 }
 
 // MySQL 返回mysql数据库
