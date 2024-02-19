@@ -9,8 +9,10 @@ import (
 	"github.com/OrigamiWang/msd/conf-center/dal"
 	"github.com/OrigamiWang/msd/conf-center/model/dto"
 	"github.com/OrigamiWang/msd/micro/confparser"
+	"github.com/OrigamiWang/msd/micro/const/errcode"
 	"github.com/OrigamiWang/msd/micro/model"
 	"github.com/OrigamiWang/msd/micro/model/errx"
+	"github.com/OrigamiWang/msd/micro/mq/kafka"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
 	"github.com/gin-gonic/gin"
 	"gopkg.in/yaml.v3"
@@ -51,5 +53,14 @@ func UpdateConfigHandler(c *gin.Context, req interface{}) (resp interface{}, err
 		return
 	}
 	svcConfReq := req.(*dto.SvcConfReq)
+
+	// produce msg to kafka
+	msg := fmt.Sprintf("%s config change", svcName)
+	e := kafka.ProduceMsg(svcName, msg)
+	if e != nil {
+		logutil.Error("kafka produce msg failed, err: %v", e)
+		return nil, errx.New(errcode.ServerError, "kafka produce msg failed")
+	}
+
 	return biz.UpdateConf(svcName, svcConfReq)
 }

@@ -22,6 +22,7 @@ func init() {
 		MinBytes: 10e3,
 		MaxBytes: 1e6,
 	})
+	KafkaConsumer.SetOffset(Kafka.LastOffset)
 }
 func ConsumeMsg(key string) (bool, error) {
 	ctx := context.Background()

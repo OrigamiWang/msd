@@ -1,0 +1,1 @@
+[2024/01/30 17:50:04 CST] [EROR] (github.com/OrigamiWang/msd/micro/util/log.Error:28) PostHandler. handler begin, Bind json failed, funcName: github.com/OrigamiWang/msd/gate/handler.AuthorizeHandler, error: EOF

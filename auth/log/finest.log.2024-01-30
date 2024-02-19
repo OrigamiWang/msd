@@ -1,0 +1,103 @@
+[2024/01/30 17:50:04 CST] [EROR] (github.com/OrigamiWang/msd/micro/util/log.Error:28) PostHandler. handler begin, Bind json failed, funcName: github.com/OrigamiWang/msd/gate/handler.AuthorizeHandler, error: EOF
+[2024/01/30 17:51:05 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/gate/handler.AuthorizeHandler, req: <nil>
+[2024/01/30 17:51:05 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:16) authorize...
+[2024/01/30 17:51:05 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/gate/handler.AuthorizeHandler, code: 0, msg: success. elapse: 79.009µs
+[2024/01/30 17:51:05 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/gate/handler.AuthorizeHandler, resp: <nil>
+[2024/01/30 17:52:18 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/gate/handler.AuthorizeHandler, req: <nil>
+[2024/01/30 17:52:18 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:16) authorize...
+[2024/01/30 17:52:18 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/gate/handler.AuthorizeHandler, code: 0, msg: success. elapse: 34.521µs
+[2024/01/30 17:52:18 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/gate/handler.AuthorizeHandler, resp: <nil>
+[2024/01/30 18:51:45 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/gate/handler.TestHandler, req: <nil>
+[2024/01/30 18:51:45 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:16) test...
+[2024/01/30 18:51:45 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/gate/handler.TestHandler, code: 0, msg: success. elapse: 109.546µs
+[2024/01/30 18:51:45 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/gate/handler.TestHandler, resp: <nil>
+[2024/01/30 19:18:34 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) ready to post to host: localhost:8081, uri: /user
+[2024/01/30 19:41:43 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, req: <nil>
+[2024/01/30 19:41:43 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) ready to post to host: localhost:8081, uri: /user
+[2024/01/30 19:41:43 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) result: map[code:0 data:[map[Age:80 ID:1 Name:Blob Sex:female] map[Age:29 ID:2 Name:Blob Sex:male] map[Age:56 ID:3 Name:Charlie Sex:female] map[Age:77 ID:4 Name:David Sex:female] map[Age:47 ID:5 Name:Eve Sex:female] map[Age:33 ID:6 Name:Frank Sex:male] map[Age:49 ID:7 Name:Grace Sex:male] map[Age:40 ID:8 Name:Hannah Sex:female] map[Age:35 ID:9 Name:Ivan Sex:male] map[Age:79 ID:10 Name:Julia Sex:female]] msg:Success ts:1706614903]
+[2024/01/30 19:41:43 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, code: 0, msg: success. elapse: 3.19779ms
+[2024/01/30 19:41:43 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, resp: <nil>
+[2024/01/30 19:45:47 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, req: <nil>
+[2024/01/30 19:45:47 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) ready to post to host: localhost:8081, uri: /user
+[2024/01/30 19:45:47 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:16) map[string]interface {}
+[2024/01/30 19:45:47 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:16) map[code:0 data:[map[Age:80 ID:1 Name:Blob Sex:female] map[Age:29 ID:2 Name:Blob Sex:male] map[Age:56 ID:3 Name:Charlie Sex:female] map[Age:77 ID:4 Name:David Sex:female] map[Age:47 ID:5 Name:Eve Sex:female] map[Age:33 ID:6 Name:Frank Sex:male] map[Age:49 ID:7 Name:Grace Sex:male] map[Age:40 ID:8 Name:Hannah Sex:female] map[Age:35 ID:9 Name:Ivan Sex:male] map[Age:79 ID:10 Name:Julia Sex:female]] msg:Success ts:1706615147]
+[2024/01/30 19:45:47 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, code: 0, msg: success. elapse: 2.437792ms
+[2024/01/30 19:45:47 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, resp: <nil>
+[2024/01/30 19:48:05 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, req: <nil>
+[2024/01/30 19:48:05 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) ready to post to host: localhost:8081, uri: /user
+[2024/01/30 19:48:05 CST] [WARN] (github.com/OrigamiWang/msd/micro/util/log.Warn:38) something wrong
+[2024/01/30 19:48:05 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, code: 0, msg: success. elapse: 2.142075ms
+[2024/01/30 19:48:05 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, resp: <nil>
+[2024/01/30 19:48:14 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, req: <nil>
+[2024/01/30 19:48:14 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) ready to post to host: localhost:8081, uri: /user
+[2024/01/30 19:48:14 CST] [WARN] (github.com/OrigamiWang/msd/micro/util/log.Warn:38) something wrong
+[2024/01/30 19:48:14 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, code: 0, msg: success. elapse: 2.049831ms
+[2024/01/30 19:48:14 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, resp: <nil>
+[2024/01/30 19:48:37 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, req: <nil>
+[2024/01/30 19:48:37 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) ready to post to host: localhost:8081, uri: /user
+[2024/01/30 19:48:37 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14)  res['code']: 0
+[2024/01/30 19:48:37 CST] [WARN] (github.com/OrigamiWang/msd/micro/util/log.Warn:38) something wrong
+[2024/01/30 19:48:37 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, code: 0, msg: success. elapse: 2.02868ms
+[2024/01/30 19:48:37 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, resp: <nil>
+[2024/01/30 19:48:49 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, req: <nil>
+[2024/01/30 19:48:49 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) ready to post to host: localhost:8081, uri: /user
+[2024/01/30 19:48:49 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14)  res['code']: 0
+[2024/01/30 19:48:49 CST] [WARN] (github.com/OrigamiWang/msd/micro/util/log.Warn:38) something wrong
+[2024/01/30 19:48:49 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, code: 0, msg: success. elapse: 1.439952ms
+[2024/01/30 19:48:49 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, resp: <nil>
+[2024/01/30 19:48:57 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, req: <nil>
+[2024/01/30 19:48:57 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) ready to post to host: localhost:8081, uri: /user
+[2024/01/30 19:48:57 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14)  res['code']: 0
+[2024/01/30 19:48:57 CST] [WARN] (github.com/OrigamiWang/msd/micro/util/log.Warn:38) something wrong
+[2024/01/30 19:48:57 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, code: 0, msg: success. elapse: 1.994874ms
+[2024/01/30 19:48:57 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, resp: <nil>
+[2024/01/30 19:49:56 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, req: <nil>
+[2024/01/30 19:49:56 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) ready to post to host: localhost:8081, uri: /user
+[2024/01/30 19:49:56 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) result: false
+[2024/01/30 19:49:56 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) result: false
+[2024/01/30 19:49:56 CST] [WARN] (github.com/OrigamiWang/msd/micro/util/log.Warn:38) something wrong
+[2024/01/30 19:49:56 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, code: 0, msg: success. elapse: 2.696744ms
+[2024/01/30 19:49:56 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, resp: <nil>
+[2024/01/30 19:50:12 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, req: <nil>
+[2024/01/30 19:50:12 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) ready to post to host: localhost:8081, uri: /user
+[2024/01/30 19:50:12 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) result: false
+[2024/01/30 19:50:12 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) result: false
+[2024/01/30 19:50:12 CST] [WARN] (github.com/OrigamiWang/msd/micro/util/log.Warn:38) something wrong
+[2024/01/30 19:50:12 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, code: 0, msg: success. elapse: 1.062313ms
+[2024/01/30 19:50:12 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, resp: <nil>
+[2024/01/30 19:50:16 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, req: <nil>
+[2024/01/30 19:50:16 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) ready to post to host: localhost:8081, uri: /user
+[2024/01/30 19:50:16 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) result: false
+[2024/01/30 19:50:16 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) result: false
+[2024/01/30 19:50:16 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) result: map[code:0 data:[map[Age:80 ID:1 Name:Blob Sex:female] map[Age:29 ID:2 Name:Blob Sex:male] map[Age:56 ID:3 Name:Charlie Sex:female] map[Age:77 ID:4 Name:David Sex:female] map[Age:47 ID:5 Name:Eve Sex:female] map[Age:33 ID:6 Name:Frank Sex:male] map[Age:49 ID:7 Name:Grace Sex:male] map[Age:40 ID:8 Name:Hannah Sex:female] map[Age:35 ID:9 Name:Ivan Sex:male] map[Age:79 ID:10 Name:Julia Sex:female]] msg:Success ts:1706615416]
+[2024/01/30 19:50:16 CST] [WARN] (github.com/OrigamiWang/msd/micro/util/log.Warn:38) something wrong
+[2024/01/30 19:50:16 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, code: 0, msg: success. elapse: 2.145708ms
+[2024/01/30 19:50:16 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, resp: <nil>
+[2024/01/30 19:51:09 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, req: <nil>
+[2024/01/30 19:51:09 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) ready to post to host: localhost:8081, uri: /user
+[2024/01/30 19:51:09 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) result: 0
+[2024/01/30 19:51:09 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) result: map[code:0 data:[map[Age:80 ID:1 Name:Blob Sex:female] map[Age:29 ID:2 Name:Blob Sex:male] map[Age:56 ID:3 Name:Charlie Sex:female] map[Age:77 ID:4 Name:David Sex:female] map[Age:47 ID:5 Name:Eve Sex:female] map[Age:33 ID:6 Name:Frank Sex:male] map[Age:49 ID:7 Name:Grace Sex:male] map[Age:40 ID:8 Name:Hannah Sex:female] map[Age:35 ID:9 Name:Ivan Sex:male] map[Age:79 ID:10 Name:Julia Sex:female]] msg:Success ts:1706615469]
+[2024/01/30 19:51:09 CST] [WARN] (github.com/OrigamiWang/msd/micro/util/log.Warn:38) something wrong
+[2024/01/30 19:51:09 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, code: 0, msg: success. elapse: 2.244526ms
+[2024/01/30 19:51:09 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, resp: <nil>
+[2024/01/30 19:52:34 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, req: <nil>
+[2024/01/30 19:52:34 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) ready to post to host: localhost:8081, uri: /user
+[2024/01/30 19:52:34 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) result: 0
+[2024/01/30 19:52:34 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) result: map[code:0 data:[map[Age:80 ID:1 Name:Blob Sex:female] map[Age:29 ID:2 Name:Blob Sex:male] map[Age:56 ID:3 Name:Charlie Sex:female] map[Age:77 ID:4 Name:David Sex:female] map[Age:47 ID:5 Name:Eve Sex:female] map[Age:33 ID:6 Name:Frank Sex:male] map[Age:49 ID:7 Name:Grace Sex:male] map[Age:40 ID:8 Name:Hannah Sex:female] map[Age:35 ID:9 Name:Ivan Sex:male] map[Age:79 ID:10 Name:Julia Sex:female]] msg:Success ts:1706615554]
+[2024/01/30 19:52:46 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, req: <nil>
+[2024/01/30 19:52:46 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) ready to post to host: localhost:8081, uri: /user
+[2024/01/30 19:52:46 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) result: 0
+[2024/01/30 19:52:46 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) result: map[code:0 data:[map[Age:80 ID:1 Name:Blob Sex:female] map[Age:29 ID:2 Name:Blob Sex:male] map[Age:56 ID:3 Name:Charlie Sex:female] map[Age:77 ID:4 Name:David Sex:female] map[Age:47 ID:5 Name:Eve Sex:female] map[Age:33 ID:6 Name:Frank Sex:male] map[Age:49 ID:7 Name:Grace Sex:male] map[Age:40 ID:8 Name:Hannah Sex:female] map[Age:35 ID:9 Name:Ivan Sex:male] map[Age:79 ID:10 Name:Julia Sex:female]] msg:Success ts:1706615566]
+[2024/01/30 19:52:46 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:16) [map[Age:80 ID:1 Name:Blob Sex:female] map[Age:29 ID:2 Name:Blob Sex:male] map[Age:56 ID:3 Name:Charlie Sex:female] map[Age:77 ID:4 Name:David Sex:female] map[Age:47 ID:5 Name:Eve Sex:female] map[Age:33 ID:6 Name:Frank Sex:male] map[Age:49 ID:7 Name:Grace Sex:male] map[Age:40 ID:8 Name:Hannah Sex:female] map[Age:35 ID:9 Name:Ivan Sex:male] map[Age:79 ID:10 Name:Julia Sex:female]]
+[2024/01/30 19:52:46 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, code: 0, msg: success. elapse: 2.3394ms
+[2024/01/30 19:52:46 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, resp: <nil>
+[2024/01/30 19:53:04 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, req: <nil>
+[2024/01/30 19:53:04 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) ready to post to host: localhost:8081, uri: /user
+[2024/01/30 19:53:04 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:16) [map[Age:80 ID:1 Name:Blob Sex:female] map[Age:29 ID:2 Name:Blob Sex:male] map[Age:56 ID:3 Name:Charlie Sex:female] map[Age:77 ID:4 Name:David Sex:female] map[Age:47 ID:5 Name:Eve Sex:female] map[Age:33 ID:6 Name:Frank Sex:male] map[Age:49 ID:7 Name:Grace Sex:male] map[Age:40 ID:8 Name:Hannah Sex:female] map[Age:35 ID:9 Name:Ivan Sex:male] map[Age:79 ID:10 Name:Julia Sex:female]]
+[2024/01/30 19:53:04 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, code: 0, msg: success. elapse: 2.858527ms
+[2024/01/30 19:53:04 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, resp: <nil>
+[2024/01/30 20:01:31 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler begin, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, req: <nil>
+[2024/01/30 20:01:31 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) ready to post to host: localhost:8081, uri: /user
+[2024/01/30 20:01:31 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:16) [map[Age:80 ID:1 Name:Blob Sex:female] map[Age:29 ID:2 Name:Blob Sex:male] map[Age:56 ID:3 Name:Charlie Sex:female] map[Age:77 ID:4 Name:David Sex:female] map[Age:47 ID:5 Name:Eve Sex:female] map[Age:33 ID:6 Name:Frank Sex:male] map[Age:49 ID:7 Name:Grace Sex:male] map[Age:40 ID:8 Name:Hannah Sex:female] map[Age:35 ID:9 Name:Ivan Sex:male] map[Age:79 ID:10 Name:Julia Sex:female]]
+[2024/01/30 20:01:31 CST] [INFO] (github.com/OrigamiWang/msd/micro/util/log.Info:14) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, code: 0, msg: success. elapse: 2.086365ms
+[2024/01/30 20:01:31 CST] [DEBG] (github.com/OrigamiWang/msd/micro/util/log.Debug:21) PostHandler. handler finish, funcName: github.com/OrigamiWang/msd/auth/handler.TestHandler, resp: <nil>
