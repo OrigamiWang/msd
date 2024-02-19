@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/OrigamiWang/msd/micro/const/mq"
-	logutil "github.com/OrigamiWang/msd/micro/util/log"
 	Kafka "github.com/segmentio/kafka-go"
 )
 
@@ -18,25 +16,43 @@ var (
 func init() {
 	KafkaConsumer = Kafka.NewReader(Kafka.ReaderConfig{
 		Brokers:  []string{"localhost:9092"},
-		Topic:    mq.KAFKA_CONF_CENTER,
+		Topic:    "test",
 		MaxWait:  time.Second * 10,
 		MinBytes: 10e3,
 		MaxBytes: 1e6,
 	})
 }
 func ConsumeMsg(key string) error {
-	// 设置超时时间
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-
-	// 读取一条消息
+	ctx := context.Background()
 	msg, err := KafkaConsumer.ReadMessage(ctx)
 	if err != nil {
 		fmt.Printf("Error reading message: %v\n", err)
 		return err
 	}
-	// 打印消息的key和value
-	fmt.Printf("Received message with key: %s, value: %s\n", string(msg.Key), string(msg.Value))
-	logutil.Info("Received message with key: %s, value: %s\n", string(msg.Key), string(msg.Value))
+	if string(msg.Key) == key {
+		fmt.Printf("Received message with key: %s, value: %s\n", string(msg.Key), string(msg.Value))
+	} else {
+		fmt.Printf("key not match\n")
+	}
+	KafkaConsumer.SetOffset(Kafka.LastOffset)
 	return nil
+}
+func PollConsume(stopChan <-chan struct{}) {
+	for {
+		select {
+		case <-stopChan:
+			fmt.Println("Received stop signal. Exiting poll function.")
+			return
+		default:
+			// polling
+			fmt.Println("polling...")
+			err := ConsumeMsg("consumer1")
+			if err != nil {
+				fmt.Printf("Error consuming message: %v\n", err)
+				break
+			}
+			time.Sleep(time.Second * 1)
+		}
+
+	}
 }
