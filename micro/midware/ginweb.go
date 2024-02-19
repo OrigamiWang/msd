@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GateApiKeyMiddleware() gin.HandlerFunc {
+func CheckGateApiKeyMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		apiKey := c.GetHeader("X-API-Key")
 		if apiKey != apikey.GATE_API_KEY {
@@ -17,6 +17,13 @@ func GateApiKeyMiddleware() gin.HandlerFunc {
 			c.Abort() // prevent to call the function next
 			return
 		}
+		c.Next()
+	}
+}
+
+func AddGateApiKeyMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		c.Request.Header.Add("X-API-Key", apikey.GATE_API_KEY)
 		c.Next()
 	}
 }

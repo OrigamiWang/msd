@@ -11,7 +11,7 @@ func New() *gin.Engine {
 	g := gin.New()
 	g.Use(gin.Logger())
 	g.Use(gin.Recovery())
-	g.Use(midware.GateApiKeyMiddleware())
+	g.Use(midware.CheckGateApiKeyMiddleware())
 	// FIXME: add customized middleware
 	// g.Use(TraceExtractor())
 	// g.Use(Trace())
@@ -27,11 +27,13 @@ func NewGate() *gin.Engine {
 	g := gin.New()
 	g.Use(gin.Logger())
 	g.Use(gin.Recovery())
+	g.Use(midware.AddGateApiKeyMiddleware())
 	return g
 }
 
 // NewGateGinWeb use for gate
-// this not use GateApiKeyMiddleware to check the api key
+// this not use CheckGateApiKeyMiddleware to check the api key
+// but use AddGateApiKeyMiddleware to add api key to the request
 func NewGateGinWeb() *model.Ginweb {
 	return &model.Ginweb{NewGate()}
 }
