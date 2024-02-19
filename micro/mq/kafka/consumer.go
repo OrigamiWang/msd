@@ -38,6 +38,7 @@ func ConsumeMsg(key string) (bool, error) {
 }
 func PollConsume(key string, stopChan <-chan struct{}, resultChan chan<- bool) {
 	for {
+		logutil.Info("polling...")
 		select {
 		case <-stopChan:
 			logutil.Info("Received stop signal. Exiting poll function.")
