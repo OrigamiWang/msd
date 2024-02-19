@@ -14,7 +14,7 @@ func init() {
 	biz.Init(svc.MANAGE)
 }
 func main() {
-	kafka.InitKafkaConsumer()
+	kafka.InitKafkaConsumer(svc.MANAGE)
 	root := framework.NewGinWeb()
 	r := root.Group("/")
 	// pprof 性能监

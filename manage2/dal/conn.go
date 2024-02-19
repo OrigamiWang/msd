@@ -6,12 +6,16 @@ import (
 	"gorm.io/gorm"
 )
 
-var DATABSE_KEY = "sample_mysql4"
+var DATABSE_KEY = "sample_mysql1"
 
 var conn *gorm.DB
 
 func InitConn() {
 	initMysqlConn()
+}
+
+func DelConn() {
+	conn = nil
 }
 
 func initMysqlConn() {

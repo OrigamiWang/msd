@@ -1,35 +1,20 @@
 package main
 
 import (
-	"github.com/OrigamiWang/msd/manage2/cli"
-	"github.com/OrigamiWang/msd/manage2/dal"
-	"github.com/OrigamiWang/msd/manage2/handler"
-	"github.com/OrigamiWang/msd/micro/confparser"
+	"github.com/OrigamiWang/msd/manage/biz"
+	"github.com/OrigamiWang/msd/manage/biz/kafka"
+	"github.com/OrigamiWang/msd/manage/handler"
+	"github.com/OrigamiWang/msd/micro/const/svc"
 	"github.com/OrigamiWang/msd/micro/framework"
 	mw "github.com/OrigamiWang/msd/micro/midware"
-	"github.com/OrigamiWang/msd/micro/model/dao"
-	logutil "github.com/OrigamiWang/msd/micro/util/log"
-	"github.com/mitchellh/mapstructure"
 )
 
 func init() {
-	resp, err := cli.Conf.GetConf("manage2")
-	if err != nil {
-		logutil.Error("get conf failed, err: %v", err)
-	}
-	m := resp.(map[string]interface{})
-	logutil.Info(m)
-	var conf *confparser.Config
-	err = mapstructure.Decode(m, &conf)
-	if err != nil {
-		logutil.Error("marshal json failed, err: %v", err)
-		panic("marshal json failed")
-	}
-	confparser.Conf = conf
-	dao.InitDb()
-	dal.InitConn()
+	// init conf
+	biz.Init(svc.MANAGE2)
 }
 func main() {
+	kafka.InitKafkaConsumer(svc.MANAGE2)
 	root := framework.NewGinWeb()
 	r := root.Group("/")
 	// pprof 性能监
@@ -38,7 +23,7 @@ func main() {
 	d := root.Group("/debug")
 	{
 		d.GET("/test", mw.PostHandler(handler.Test))
-
+		d.GET("/ext/:key", mw.PostHandler(handler.GetConfExtHandler)) // 用于测试conf-center动态更新配置
 	}
 	{
 		r.GET("/user", mw.PostHandlerWithJwt(handler.GetUserListHandler))
