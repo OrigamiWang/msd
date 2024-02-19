@@ -2,9 +2,9 @@ package kafka
 
 import (
 	"context"
-	"fmt"
 	"time"
 
+	logutil "github.com/OrigamiWang/msd/micro/util/log"
 	Kafka "github.com/segmentio/kafka-go"
 )
 
@@ -22,35 +22,34 @@ func init() {
 		MaxBytes: 1e6,
 	})
 }
-func ConsumeMsg(key string) error {
+func ConsumeMsg(key string) (bool, error) {
 	ctx := context.Background()
+	res := false
 	msg, err := KafkaConsumer.ReadMessage(ctx)
 	if err != nil {
-		fmt.Printf("Error reading message: %v\n", err)
-		return err
+		logutil.Error("Error reading message: %v\n", err)
+		return res, err
 	}
 	if string(msg.Key) == key {
-		fmt.Printf("Received message with key: %s, value: %s\n", string(msg.Key), string(msg.Value))
-	} else {
-		fmt.Printf("key not match\n")
+		res = true
 	}
 	KafkaConsumer.SetOffset(Kafka.LastOffset)
-	return nil
+	return res, nil
 }
-func PollConsume(stopChan <-chan struct{}) {
+func PollConsume(key string, stopChan <-chan struct{}, resultChan chan<- bool) {
 	for {
 		select {
 		case <-stopChan:
-			fmt.Println("Received stop signal. Exiting poll function.")
+			logutil.Info("Received stop signal. Exiting poll function.")
 			return
 		default:
 			// polling
-			fmt.Println("polling...")
-			err := ConsumeMsg("consumer1")
+			res, err := ConsumeMsg(key)
 			if err != nil {
-				fmt.Printf("Error consuming message: %v\n", err)
+				logutil.Error("Error consuming message: %v", err)
 				break
 			}
+			resultChan <- res
 			time.Sleep(time.Second * 1)
 		}
 
