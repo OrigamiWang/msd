@@ -4,6 +4,7 @@ import (
 	"context"
 	"time"
 
+	"github.com/OrigamiWang/msd/micro/const/mq"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
 	Kafka "github.com/segmentio/kafka-go"
 )
@@ -16,7 +17,7 @@ var (
 func init() {
 	KafkaConsumer = Kafka.NewReader(Kafka.ReaderConfig{
 		Brokers:  []string{"localhost:9092"},
-		Topic:    "test",
+		Topic:    mq.KAFKA_CONF_CENTER,
 		MaxWait:  time.Second * 10,
 		MinBytes: 10e3,
 		MaxBytes: 1e6,
