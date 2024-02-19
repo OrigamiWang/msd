@@ -20,7 +20,7 @@ func init() {
 	KafkaConn, err = Kafka.DialLeader(context.Background(), "tcp", "localhost:9092", mq.KAFKA_CONF_CENTER, mq.PARTITION_NUM)
 	if err != nil {
 		logutil.Error("kafka connect failed, err: %v", err)
-		panic(err.Error())
+		// panic(err.Error())
 	}
 }
 func ProduceMsg(key string, msg string) error {
