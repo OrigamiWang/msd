@@ -38,5 +38,6 @@ func ProduceMsg(key string, msg string) error {
 		logutil.Error("kafka produce msg failed, err: %v", err)
 		return err
 	}
+	logutil.Info("kafka produce msg success, key: %s, msg: %s", key, msg)
 	return nil
 }
