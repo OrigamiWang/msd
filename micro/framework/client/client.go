@@ -2,6 +2,7 @@ package client
 
 import (
 	"bytes"
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -20,8 +21,18 @@ type HttpClient struct {
 }
 
 func init() {
+	// HC = &HttpClient{
+	// 	Client: &http.Client{},
+	// }
+}
+
+func InitClient(tlsConfig *tls.Config) {
 	HC = &HttpClient{
-		Client: &http.Client{},
+		Client: &http.Client{
+			Transport: &http.Transport{
+				TLSClientConfig: tlsConfig,
+			},
+		},
 	}
 }
 
@@ -82,7 +93,7 @@ func (hc *HttpClient) RequestWithHead(method, host, uri string, header http.Head
 	logutil.Info("ready to post to host: %v, uri: %v", host, uri)
 	url := host + uri
 	if !strings.HasPrefix(url, "http://") || !strings.HasPrefix(url, "https://") {
-		url = fmt.Sprintf("http://%s", url)
+		url = fmt.Sprintf("https://%s", url)
 	}
 	return do(method, url, header, param)
 }
