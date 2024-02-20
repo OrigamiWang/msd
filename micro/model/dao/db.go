@@ -13,7 +13,7 @@ import (
 var dbConns = make(map[string]interface{}, 0)
 
 func init() {
-	//InitDb()
+	InitDb()
 }
 func InitDb() {
 	fmt.Println("init db...")

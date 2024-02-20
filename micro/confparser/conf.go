@@ -2,12 +2,13 @@ package confparser
 
 import (
 	"fmt"
-	logutil "github.com/OrigamiWang/msd/micro/util/log"
-	"gopkg.in/yaml.v3"
 	"os"
 	"reflect"
 	"strings"
 	"time"
+
+	logutil "github.com/OrigamiWang/msd/micro/util/log"
+	"gopkg.in/yaml.v3"
 )
 
 var Conf *Config // 读取配置文件的配置
@@ -30,8 +31,8 @@ type Config struct {
 
 func init() {
 	// automately load local conf
-	//logutil.Info("load conf...")
-	//Conf = LoadConf()
+	logutil.Info("load conf...")
+	Conf = LoadConf()
 }
 
 func LoadConf() *Config {
