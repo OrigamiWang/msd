@@ -3,7 +3,7 @@ module github.com/OrigamiWang/msd/conf-center
 go 1.20
 
 require (
-	github.com/OrigamiWang/msd/micro v0.0.0-20240219064445-916a721a6f3a
+	github.com/OrigamiWang/msd/micro v0.0.0-20240220090018-57e487a8a764
 	github.com/gin-gonic/gin v1.9.1
 	gopkg.in/yaml.v3 v3.0.1
 	gorm.io/gorm v1.25.7
