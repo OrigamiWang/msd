@@ -18,6 +18,12 @@ github.com/OrigamiWang/msd/micro v0.0.0-20240219065805-f2dfd08d822f h1:kZ0jnAizv
 github.com/OrigamiWang/msd/micro v0.0.0-20240219065805-f2dfd08d822f/go.mod h1:rtSjPz0TwVYoeNeRW6lme6ZAloaCKWqdJqA5oqck0DI=
 github.com/OrigamiWang/msd/micro v0.0.0-20240219073209-b363f53033ee h1:LG0NgUQTcnnGQV+IarOEvV3kUwQJnncqNoes7iTMMYs=
 github.com/OrigamiWang/msd/micro v0.0.0-20240219073209-b363f53033ee/go.mod h1:rtSjPz0TwVYoeNeRW6lme6ZAloaCKWqdJqA5oqck0DI=
+github.com/OrigamiWang/msd/micro v0.0.0-20240219075404-ce2378fc7068 h1:qoIc+TJEmPpLlEwMfo8b/71I7/P/eDh5C90tOCUT+I4=
+github.com/OrigamiWang/msd/micro v0.0.0-20240219075404-ce2378fc7068/go.mod h1:rtSjPz0TwVYoeNeRW6lme6ZAloaCKWqdJqA5oqck0DI=
+github.com/OrigamiWang/msd/micro v0.0.0-20240219082321-bcd832ac28f6 h1:goBoz+9f+TjN6CKaTxQQA0vz5fTx9ZRA5eOEMlCTN/Y=
+github.com/OrigamiWang/msd/micro v0.0.0-20240219082321-bcd832ac28f6/go.mod h1:rtSjPz0TwVYoeNeRW6lme6ZAloaCKWqdJqA5oqck0DI=
+github.com/OrigamiWang/msd/micro v0.0.0-20240220075732-e48e63b274ce h1:1waxT1FzadrXqOnKkrncea6qDobKYbolyuFdeMsFzMg=
+github.com/OrigamiWang/msd/micro v0.0.0-20240220075732-e48e63b274ce/go.mod h1:rtSjPz0TwVYoeNeRW6lme6ZAloaCKWqdJqA5oqck0DI=
 github.com/bytedance/sonic v1.5.0/go.mod h1:ED5hyg4y6t3/9Ku1R6dU/4KyJ48DZ4jPhfY1O2AihPM=
 github.com/bytedance/sonic v1.10.0-rc/go.mod h1:ElCzW+ufi8qKqNW0FY314xriJhyJhuoJ3gFZdAHF7NM=
 github.com/bytedance/sonic v1.10.2 h1:GQebETVBxYB7JGWJtLBi07OVzWwt+8dWA00gEVW2ZFE=
