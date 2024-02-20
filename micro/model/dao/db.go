@@ -17,6 +17,9 @@ func init() {
 }
 func InitDb() {
 	fmt.Println("init db...")
+	if confparser.Conf == nil {
+		return
+	}
 	dbs := confparser.Conf.Dbs
 	if dbs == nil {
 		logutil.Warn("dbs is nil")
