@@ -4,8 +4,8 @@ go 1.20
 
 require (
 	github.com/OrigamiWang/msd/auth v0.0.0-20240211075506-e08a5eed0951
-	github.com/OrigamiWang/msd/conf-center v0.0.0-20240218090013-d0153e98a3eb
-	github.com/OrigamiWang/msd/micro v0.0.0-20240220075732-e48e63b274ce
+	github.com/OrigamiWang/msd/conf-center v0.0.0-20240220090057-a63176924b54
+	github.com/OrigamiWang/msd/micro v0.0.0-20240221071943-2bcfa6e953b8
 	github.com/gin-gonic/gin v1.9.1
 	github.com/mitchellh/mapstructure v1.5.0
 	gorm.io/gorm v1.25.7

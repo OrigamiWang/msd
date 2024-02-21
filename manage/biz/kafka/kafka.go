@@ -1,7 +1,7 @@
 package kafka
 
 import (
-	"github.com/OrigamiWang/msd/manage/biz"
+	"github.com/OrigamiWang/msd/manage/dal"
 	"github.com/OrigamiWang/msd/micro/mq/kafka"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
 )
@@ -11,8 +11,8 @@ func processResult(svcName string, resultChan <-chan bool) {
 		if res {
 			logutil.Info("process msg, conf-center update")
 			// get conf
-			biz.DelConf()
-			biz.InitConf(svcName)
+			dal.DelConf()
+			dal.InitConf(svcName)
 		}
 	}
 }
