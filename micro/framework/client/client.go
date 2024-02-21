@@ -3,10 +3,13 @@ package client
 import (
 	"bytes"
 	"crypto/tls"
+	"crypto/x509"
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
+	"os"
 	"strings"
 
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
@@ -24,9 +27,25 @@ func init() {
 	// HC = &HttpClient{
 	// 	Client: &http.Client{},
 	// }
-}
+	caCert, err := os.ReadFile("conf/ca.crt")
+	if err != nil {
+		log.Fatalf("Reading CA certificate: %s", err)
+	}
 
-func InitClient(tlsConfig *tls.Config) {
+	caCertPool := x509.NewCertPool()
+	caCertPool.AppendCertsFromPEM(caCert)
+
+	// 读取客户端证书和私钥
+	clientCert, err := tls.LoadX509KeyPair("conf/client.crt", "conf/client.key")
+	if err != nil {
+		log.Fatalf("Loading client key pair: %s", err)
+	}
+
+	// 创建TLS配置
+	tlsConfig := &tls.Config{
+		RootCAs:      caCertPool,
+		Certificates: []tls.Certificate{clientCert},
+	}
 	HC = &HttpClient{
 		Client: &http.Client{
 			Transport: &http.Transport{
@@ -35,6 +54,16 @@ func InitClient(tlsConfig *tls.Config) {
 		},
 	}
 }
+
+// func InitClient(tlsConfig *tls.Config) {
+// 	HC = &HttpClient{
+// 		Client: &http.Client{
+// 			Transport: &http.Transport{
+// 				TLSClientConfig: tlsConfig,
+// 			},
+// 		},
+// 	}
+// }
 
 // RequestWithHead is a shortcut of func(hc *HttpClient) RequestWithHead(){}
 func RequestWithHead(method, host, uri string, header http.Header, param interface{}) (interface{}, error) {
