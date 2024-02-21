@@ -5,11 +5,13 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/IBM/sarama"
 	"github.com/OrigamiWang/msd/conf-center/biz"
 	"github.com/OrigamiWang/msd/conf-center/dal"
 	"github.com/OrigamiWang/msd/conf-center/model/dto"
 	"github.com/OrigamiWang/msd/micro/confparser"
 	"github.com/OrigamiWang/msd/micro/const/errcode"
+	"github.com/OrigamiWang/msd/micro/const/mq"
 	"github.com/OrigamiWang/msd/micro/model"
 	"github.com/OrigamiWang/msd/micro/model/errx"
 	"github.com/OrigamiWang/msd/micro/mq/kafka"
@@ -55,12 +57,16 @@ func UpdateConfigHandler(c *gin.Context, req interface{}) (resp interface{}, err
 	svcConfReq := req.(*dto.SvcConfReq)
 
 	// produce msg to kafka
-	msg := fmt.Sprintf("%s config change", svcName)
-	e := kafka.ProduceMsg(svcName, msg)
+	msg := &sarama.ProducerMessage{
+		Topic: mq.KAFKA_CONF_CENTER,
+		Value: sarama.StringEncoder(svcName),
+	}
+
+	resp, err = biz.UpdateConf(svcName, svcConfReq)
+	e := kafka.ProduceMsg(msg)
 	if e != nil {
 		logutil.Error("kafka produce msg failed, err: %v", e)
 		return nil, errx.New(errcode.ServerError, "kafka produce msg failed")
 	}
-
-	return biz.UpdateConf(svcName, svcConfReq)
+	return
 }

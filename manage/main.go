@@ -6,7 +6,6 @@ import (
 	"github.com/OrigamiWang/msd/manage/biz/kafka"
 	"github.com/OrigamiWang/msd/manage/handler"
 	"github.com/OrigamiWang/msd/micro/auth/tls"
-	"github.com/OrigamiWang/msd/micro/const/svc"
 	"github.com/OrigamiWang/msd/micro/framework"
 	mw "github.com/OrigamiWang/msd/micro/midware"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
@@ -15,8 +14,7 @@ import (
 func init() {
 }
 func main() {
-
-	kafka.InitKafkaConsumer(svc.MANAGE)
+	kafka.InitKafkaConsumer()
 	root := framework.NewGinWeb()
 	r := root.Group("/")
 	// pprof 性能监控
