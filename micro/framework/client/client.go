@@ -2,13 +2,16 @@ package client
 
 import (
 	"bytes"
+	"crypto/tls"
+	"crypto/x509"
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
+	"os"
 	"strings"
 
-	"github.com/OrigamiWang/msd/micro/auth/tls"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
 )
 
@@ -21,8 +24,7 @@ type HttpClient struct {
 }
 
 func init() {
-	tlsConfig := tls.TlsConfig
-	logutil.Info("tlsConfig: %v", tlsConfig)
+	tlsConfig := getTlsConfig()
 	HC = &HttpClient{
 		Client: &http.Client{
 			Transport: &http.Transport{
@@ -30,6 +32,30 @@ func init() {
 			},
 		},
 	}
+}
+
+func getTlsConfig() *tls.Config {
+	caCert, err := os.ReadFile("conf/ca.crt")
+	if err != nil {
+		log.Fatalf("Reading CA certificate: %s", err)
+	}
+
+	caCertPool := x509.NewCertPool()
+	caCertPool.AppendCertsFromPEM(caCert)
+
+	// 读取客户端证书和私钥
+	clientCert, err := tls.LoadX509KeyPair("conf/client.crt", "conf/client.key")
+	if err != nil {
+		log.Fatalf("Loading client key pair: %s", err)
+	}
+
+	// 创建TLS配置
+	tlsConfig := &tls.Config{
+		Certificates: []tls.Certificate{clientCert},
+		ClientAuth:   tls.RequireAndVerifyClientCert,
+		ClientCAs:    caCertPool,
+	}
+	return tlsConfig
 }
 
 // RequestWithHead is a shortcut of func(hc *HttpClient) RequestWithHead(){}
