@@ -24,17 +24,6 @@ type HttpClient struct {
 }
 
 func init() {
-	tlsConfig := getTlsConfig()
-	HC = &HttpClient{
-		Client: &http.Client{
-			Transport: &http.Transport{
-				TLSClientConfig: tlsConfig,
-			},
-		},
-	}
-}
-
-func getTlsConfig() *tls.Config {
 	caCert, err := os.ReadFile("conf/ca.crt")
 	if err != nil {
 		log.Fatalf("Reading CA certificate: %s", err)
@@ -51,12 +40,27 @@ func getTlsConfig() *tls.Config {
 
 	// 创建TLS配置
 	tlsConfig := &tls.Config{
+		RootCAs:      caCertPool,
 		Certificates: []tls.Certificate{clientCert},
-		ClientAuth:   tls.RequireAndVerifyClientCert,
-		ClientCAs:    caCertPool,
 	}
-	return tlsConfig
+	HC = &HttpClient{
+		Client: &http.Client{
+			Transport: &http.Transport{
+				TLSClientConfig: tlsConfig,
+			},
+		},
+	}
 }
+
+// func InitClient(tlsConfig *tls.Config) {
+// 	HC = &HttpClient{
+// 		Client: &http.Client{
+// 			Transport: &http.Transport{
+// 				TLSClientConfig: tlsConfig,
+// 			},
+// 		},
+// 	}
+// }
 
 // RequestWithHead is a shortcut of func(hc *HttpClient) RequestWithHead(){}
 func RequestWithHead(method, host, uri string, header http.Header, param interface{}) (interface{}, error) {
