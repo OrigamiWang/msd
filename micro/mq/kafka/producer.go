@@ -1,43 +1,34 @@
 package kafka
 
 import (
-	"context"
-	"time"
-
-	"github.com/OrigamiWang/msd/micro/const/mq"
+	"github.com/IBM/sarama"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
-	Kafka "github.com/segmentio/kafka-go"
 )
 
 // ProduceMsg produce message
 // id: 分区键, msg: 消息
 var (
-	KafkaConn *Kafka.Conn
+	kafkaProducer sarama.SyncProducer
 )
 
 func init() {
 	var err error
-	KafkaConn, err = Kafka.DialLeader(context.Background(), "tcp", "localhost:9092", mq.KAFKA_CONF_CENTER, mq.PARTITION_NUM)
+
+	config := sarama.NewConfig()
+	config.Producer.Return.Successes = true
+
+	kafkaProducer, err = sarama.NewSyncProducer([]string{"localhost:9092"}, config)
+
 	if err != nil {
-		logutil.Error("kafka connect failed, err: %v", err)
-		// panic(err.Error())
+		logutil.Error("Failed to start Kafka producer, err: %v", err)
 	}
 }
-func ProduceMsg(key string, msg string) error {
-	kafkaMsg := Kafka.Message{
-		Key:   []byte(key),
-		Value: []byte(msg),
-	}
-	err := KafkaConn.SetWriteDeadline(time.Now().Add(time.Second * 10))
+
+func ProduceMsg(msg *sarama.ProducerMessage) {
+	partition, offset, err := kafkaProducer.SendMessage(msg)
 	if err != nil {
-		logutil.Error("kafka set write deadline failed, err: %v", err)
-		return err
+		logutil.Error("Failed to send message, err: %v", err)
 	}
-	_, err = KafkaConn.WriteMessages(kafkaMsg)
-	if err != nil {
-		logutil.Error("kafka produce msg failed, err: %v", err)
-		return err
-	}
-	logutil.Info("kafka produce msg success, key: %s, msg: %s", key, msg)
-	return nil
+
+	logutil.Info("Message is stored in topic(%s)/partition(%d)/offset(%d)\n", msg.Topic, partition, offset)
 }
