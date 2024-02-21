@@ -24,11 +24,13 @@ func init() {
 	}
 }
 
-func ProduceMsg(msg *sarama.ProducerMessage) {
+func ProduceMsg(msg *sarama.ProducerMessage) error {
 	partition, offset, err := kafkaProducer.SendMessage(msg)
 	if err != nil {
 		logutil.Error("Failed to send message, err: %v", err)
+		return err
 	}
 
 	logutil.Info("Message is stored in topic(%s)/partition(%d)/offset(%d)\n", msg.Topic, partition, offset)
+	return nil
 }

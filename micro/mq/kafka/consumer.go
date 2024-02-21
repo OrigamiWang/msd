@@ -20,10 +20,11 @@ func init() {
 	}
 }
 
-func ConsumeMsg(topic string, handler func(string)) {
+func ConsumeMsg(topic string, handler func(string)) error {
 	partitionConsumer, err := kafkaConsumer.ConsumePartition(topic, mq.PARTITION_NUM, sarama.OffsetNewest)
 	if err != nil {
 		logutil.Error("Failed to start partition consumer, err: %v", err)
+		return err
 	}
 
 	defer func() {
@@ -36,6 +37,7 @@ func ConsumeMsg(topic string, handler func(string)) {
 		logutil.Info("Received message: %s, key: %s", string(message.Value), string(message.Key))
 		handler(string(message.Key))
 	}
+	return nil
 }
 
 // func ConsumeMsg(key string) (bool, error) {
