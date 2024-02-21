@@ -24,6 +24,9 @@ type HttpClient struct {
 }
 
 func init() {
+	// HC = &HttpClient{
+	// 	Client: &http.Client{},
+	// }
 	caCert, err := os.ReadFile("conf/ca.crt")
 	if err != nil {
 		log.Fatalf("Reading CA certificate: %s", err)
