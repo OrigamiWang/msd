@@ -22,6 +22,7 @@ type HttpClient struct {
 
 func init() {
 	tlsConfig := tls.TlsConfig
+	logutil.Info("tlsConfig: %v", tlsConfig)
 	HC = &HttpClient{
 		Client: &http.Client{
 			Transport: &http.Transport{
