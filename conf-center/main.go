@@ -24,6 +24,8 @@ func main() {
 	{
 		r.GET("/config/:name", handler.GetConfigHandler)
 		r.PUT("/config/:name", mw.PostHandler(handler.UpdateConfigHandler, handler.ConfBinder))
+		r.GET("/regconf", mw.PostHandler(handler.GetSvcRegisterListHandler))
+		r.GET("/regconf/:name", mw.PostHandler(handler.GetSvcRegisterHandler))
 	}
 	tlsConfig := tls.TlsServerConfig
 	srv := &http.Server{

@@ -42,7 +42,7 @@ func (facade *ConfCenterFacade) UpdateConf(svcName string, conf interface{}) (in
 }
 
 func (facade *ConfCenterFacade) GetAllSvc() (interface{}, error) {
-	resp, err := client.RequestWithHead(httpmethod.GET, "localhost:8084", "/register", http.Header{}, nil)
+	resp, err := client.RequestWithHead(httpmethod.GET, "localhost:8084", "/regconf", http.Header{}, nil)
 	if err != nil {
 		logutil.Error("request with head failed, err: %v", err)
 		return nil, err
@@ -52,7 +52,7 @@ func (facade *ConfCenterFacade) GetAllSvc() (interface{}, error) {
 }
 
 func (facade *ConfCenterFacade) GetSvcByName(name string) (interface{}, error) {
-	uri := fmt.Sprintf("/register/%s", name)
+	uri := fmt.Sprintf("/regconf/%s", name)
 	resp, err := client.RequestWithHead(httpmethod.GET, "localhost:8084", uri, http.Header{}, nil)
 	if err != nil {
 		logutil.Error("request with head failed, err: %v", err)
