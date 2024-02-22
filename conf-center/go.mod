@@ -4,8 +4,9 @@ go 1.20
 
 require (
 	github.com/IBM/sarama v1.42.2
-	github.com/OrigamiWang/msd/micro v0.0.0-20240221115054-1a968dbdc401
+	github.com/OrigamiWang/msd/micro v0.0.0-20240222073333-5701a7be29ac
 	github.com/gin-gonic/gin v1.9.1
+	github.com/mitchellh/mapstructure v1.5.0
 	gopkg.in/yaml.v3 v3.0.1
 	gorm.io/gorm v1.25.7
 )
