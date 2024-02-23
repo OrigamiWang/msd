@@ -39,8 +39,8 @@ func ConsumeMsg(topic string, handler func(string)) error {
 	}()
 
 	for message := range partitionConsumer.Messages() {
-		logutil.Info("Received message: %s", string(message.Value))
-		handler(string(message.Value))
+		logutil.Info("Received message, value: %s, key: %s", string(message.Value), string(message.Key))
+		handler(string(message.Key))
 	}
 	return nil
 }

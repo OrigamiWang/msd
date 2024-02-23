@@ -68,5 +68,5 @@ func Redis(key string) (*redis.Client, error) {
 		return v.(*redis.Client), nil
 	}
 	logutil.Error("get redis failed")
-	return nil, fmt.Errorf("get mysql redis")
+	return nil, fmt.Errorf("get redis failed")
 }
