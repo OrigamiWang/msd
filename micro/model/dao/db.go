@@ -49,7 +49,7 @@ func InitDb() {
 }
 
 func DelDB(key string) {
-	delete(dbConns, key)
+	dbConns = make(map[string]interface{}, 0)
 }
 
 // MySQL 返回mysql数据库
