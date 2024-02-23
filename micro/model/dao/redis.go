@@ -51,3 +51,7 @@ func (rc *RedisClient) RangeAll(key string) ([]string, error) {
 func (rc *RedisClient) Ttl(key string) (time.Duration, error) {
 	return rc.Client.TTL(context.Background(), key).Result()
 }
+
+func (rc *RedisClient) Scan(prefix string, cnt int64) (keys []string, cursor uint64, err error) {
+	return rc.Client.Scan(context.Background(), 0, prefix, cnt).Result()
+}
