@@ -22,7 +22,7 @@ func init() {
 	martitionConsumerMap = make(map[string]sarama.PartitionConsumer)
 }
 
-func ConsumeMsg(topic string, handler func(string)) error {
+func ConsumeMsg(topic string, handler func(...string)) error {
 	if martitionConsumerMap[topic] == nil {
 		partitionConsumer, err := kafkaConsumer.ConsumePartition(topic, mq.PARTITION_NUM, sarama.OffsetNewest)
 		if err != nil {
