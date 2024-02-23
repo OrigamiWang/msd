@@ -4,7 +4,7 @@ go 1.21.0
 
 require (
 	github.com/IBM/sarama v1.42.2
-	github.com/OrigamiWang/msd/micro v0.0.0-20240223090144-f69e7715f997
+	github.com/OrigamiWang/msd/micro v0.0.0-20240223091252-fd48e1a00b4e
 	gorm.io/gorm v1.25.7
 )
 

@@ -13,7 +13,8 @@ func ListenServiceDiscovery() {
 		for {
 			logutil.Info("listen service discovery...")
 			var svc_cnt int64 = 10
-			if keys, _, err := dao.RC.Scan(db.HEART_BEAT_REDIS_PREFIX, svc_cnt); err == nil {
+			match := db.HEART_BEAT_REDIS_PREFIX + "*"
+			if keys, _, err := dao.RC.Scan(match, svc_cnt); err == nil {
 				for _, key := range keys {
 					if val, err := dao.RC.Get(key); err == nil {
 						logutil.Info("key: %v, val: %v", key, val)

@@ -7,11 +7,11 @@ import (
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
 )
 
-func updateConf(svcName string) {
+func updateConf(str ...string) {
 	logutil.Info("process msg, conf-center update")
 	dal.DelConf()
-	dal.InitConf(svcName)
+	dal.InitConf(str[0])
 }
-func InitKafkaConsumer() {
+func InitConfCenterConsumer() {
 	go kafka.ConsumeMsg(mq.KAFKA_CONF_CENTER, updateConf)
 }

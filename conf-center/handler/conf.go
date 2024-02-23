@@ -60,6 +60,7 @@ func UpdateConfigHandler(c *gin.Context, req interface{}) (resp interface{}, err
 	msg := &sarama.ProducerMessage{
 		Topic: mq.KAFKA_CONF_CENTER,
 		Value: sarama.StringEncoder(svcName),
+		Key:   sarama.StringEncoder(svcName),
 	}
 
 	resp, err = biz.UpdateConf(svcName, svcConfReq)
