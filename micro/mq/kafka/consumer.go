@@ -40,7 +40,7 @@ func ConsumeMsg(topic string, handler func(...string)) error {
 
 	for message := range partitionConsumer.Messages() {
 		logutil.Info("Received message, value: %s, key: %s", string(message.Value), string(message.Key))
-		handler(string(message.Key))
+		handler(string(message.Key), string(message.Value))
 	}
 	return nil
 }
