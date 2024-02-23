@@ -1,9 +1,5 @@
 github.com/IBM/sarama v1.42.2 h1:VoY4hVIZ+WQJ8G9KNY/SQlWguBQXQ9uvFPOnrcu8hEw=
 github.com/IBM/sarama v1.42.2/go.mod h1:FLPGUGwYqEs62hq2bVG6Io2+5n+pS6s/WOXVKWSLFtE=
-github.com/OrigamiWang/msd/micro v0.0.0-20240223033803-97823bd8b902 h1:uxJgSlvuUFra3aeFmO6mE1+13xMQ8cDNClndJ+7irFA=
-github.com/OrigamiWang/msd/micro v0.0.0-20240223033803-97823bd8b902/go.mod h1:yrCcel96+LEgGcyWTSl5qAQN5yDcKW7raJvShBsgV48=
-github.com/OrigamiWang/msd/micro v0.0.0-20240223063728-caf08a4ac508 h1:VRtZbezcA3UwjmR8BYioOVid6KlCuaAQr/GABZmgjKQ=
-github.com/OrigamiWang/msd/micro v0.0.0-20240223063728-caf08a4ac508/go.mod h1:yrCcel96+LEgGcyWTSl5qAQN5yDcKW7raJvShBsgV48=
 github.com/OrigamiWang/msd/micro v0.0.0-20240223065722-c5cded625e8a h1:6tZddmA2e/TXa9u0JYde1ysXbNX3TpMaVCb5TjMP/8s=
 github.com/OrigamiWang/msd/micro v0.0.0-20240223065722-c5cded625e8a/go.mod h1:yrCcel96+LEgGcyWTSl5qAQN5yDcKW7raJvShBsgV48=
 github.com/bsm/ginkgo/v2 v2.12.0 h1:Ny8MWAHyOepLGlLKYmXG4IEkioBysk6GpaRTLC8zwWs=

@@ -26,7 +26,7 @@ func BeatHeartBeat(val string) {
 	go func() {
 		for {
 			msg := &sarama.ProducerMessage{
-				Topic: mq.KAFKA_CONF_CENTER,
+				Topic: mq.KAFKA_HEART_BEAT,
 				Value: sarama.StringEncoder(val),
 			}
 			e := kafka.ProduceMsg(msg)

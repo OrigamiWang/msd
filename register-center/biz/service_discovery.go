@@ -11,6 +11,7 @@ import (
 func ListenServiceDiscovery() {
 	go func() {
 		for {
+			logutil.Info("listen service discovery...")
 			var svc_cnt int64 = 10
 			if keys, _, err := dao.RC.Scan(db.HEART_BEAT_REDIS_PREFIX, svc_cnt); err == nil {
 				for _, key := range keys {
