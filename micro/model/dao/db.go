@@ -6,6 +6,7 @@ import (
 	"github.com/OrigamiWang/msd/micro/confparser"
 	"github.com/OrigamiWang/msd/micro/const/db"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
+	"github.com/redis/go-redis/v9"
 	"gorm.io/gorm"
 )
 
@@ -34,7 +35,11 @@ func InitDb() {
 			}
 			dbConns[_db.Key] = conn
 		case db.REDIS:
-			continue
+			conn := InitRedis(&_db)
+			if conn == nil {
+				continue
+			}
+			dbConns[_db.Key] = conn
 		case db.MONGODB:
 			continue
 		default:
@@ -43,16 +48,25 @@ func InitDb() {
 	}
 }
 
-func DelDB() {
-	dbConns = make(map[string]interface{}, 0)
+func DelDB(key string) {
+	delete(dbConns, key)
 }
 
 // MySQL 返回mysql数据库
-func MySQL(key string) (mysql *gorm.DB, err error) {
+func MySQL(key string) (*gorm.DB, error) {
 	fmt.Println("mysql...")
 	if v, ok := dbConns[key]; ok {
 		return v.(*gorm.DB), nil
 	}
-	logutil.Error("connect mysql failed, err: %v", err)
-	return nil, err
+	logutil.Error("get mysql failed, err")
+	return nil, fmt.Errorf("get mysql failed, err")
+}
+
+func Redis(key string) (*redis.Client, error) {
+	fmt.Println("redis...")
+	if v, ok := dbConns[key]; ok {
+		return v.(*redis.Client), nil
+	}
+	logutil.Error("get redis failed")
+	return nil, fmt.Errorf("get mysql redis")
 }
