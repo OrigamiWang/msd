@@ -47,3 +47,7 @@ func (rc *RedisClient) LRange(key string, start, end int64) ([]string, error) {
 func (rc *RedisClient) RangeAll(key string) ([]string, error) {
 	return rc.Client.LRange(context.Background(), key, 0, -1).Result()
 }
+
+func (rc *RedisClient) Ttl(key string) (time.Duration, error) {
+	return rc.Client.TTL(context.Background(), key).Result()
+}
