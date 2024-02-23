@@ -48,7 +48,7 @@ func InitDb() {
 	}
 }
 
-func DelDB(key string) {
+func DelDB() {
 	dbConns = make(map[string]interface{}, 0)
 }
 
