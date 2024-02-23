@@ -17,8 +17,12 @@ func ListenServiceDiscovery() {
 				for _, key := range keys {
 					if val, err := dao.RC.Get(key); err == nil {
 						logutil.Info("key: %v, val: %v", key, val)
+					} else {
+						logutil.Error("get redis error: %v, err")
 					}
 				}
+			} else {
+				logutil.Error("scan redis error: %v, err")
 			}
 			time.Sleep(time.Second * 10)
 		}

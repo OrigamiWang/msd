@@ -16,17 +16,20 @@ func ListenHeartBeat() {
 	go kafka.ConsumeMsg(mq.KAFKA_HEART_BEAT, heartBeatHandler)
 }
 
-func heartBeatHandler(svcName string) {
-	key := db.HEART_BEAT_REDIS_PREFIX + svcName
-	dao.RC.Set(key, "", time.Second*5)
+func heartBeatHandler(strArr ...string) {
+	kafkaKey := strArr[0]
+	kafkaVal := strArr[1]
+	key := db.HEART_BEAT_REDIS_PREFIX + kafkaKey
+	dao.RC.Set(key, kafkaVal, time.Second*5)
 }
 
 // heartbeat beater
-func BeatHeartBeat(val string) {
+func BeatHeartBeat(svcName, val string) {
 	go func() {
 		for {
 			msg := &sarama.ProducerMessage{
 				Topic: mq.KAFKA_HEART_BEAT,
+				Key:   sarama.StringEncoder(svcName),
 				Value: sarama.StringEncoder(val),
 			}
 			e := kafka.ProduceMsg(msg)
