@@ -20,7 +20,8 @@ func heartBeatHandler(strArr ...string) {
 	kafkaKey := strArr[0]
 	kafkaVal := strArr[1]
 	key := db.HEART_BEAT_REDIS_PREFIX + kafkaKey
-	dao.RC.Set(key, kafkaVal, time.Second*5)
+	dao.RC.Set(key, kafkaVal, time.Second*10)
+	// dao.RC.Set(key, kafkaVal, time.Minute*1)
 }
 
 // heartbeat beater
@@ -36,7 +37,7 @@ func BeatHeartBeat(svcName, val string) {
 			if e != nil {
 				logutil.Error("kafka produce msg failed, err: %v", e)
 			}
-			time.Sleep(time.Second * 2)
+			time.Sleep(time.Second * 5)
 		}
 	}()
 }

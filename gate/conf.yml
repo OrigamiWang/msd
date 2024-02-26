@@ -13,9 +13,9 @@ databases:
       maxOpen: 8
       maxConnLifetime: 0s
 
-  - key: sample_redis1
+  - key: heart_beat_redis1
     type: redis
-    name: sample_redis
+    name: msd
     host: 127.0.0.1
     port: 6379
     user: root

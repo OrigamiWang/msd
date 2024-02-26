@@ -6,6 +6,9 @@ import (
 	"net/http/httputil"
 	"net/url"
 
+	"github.com/OrigamiWang/msd/micro/const/db"
+	logutil "github.com/OrigamiWang/msd/micro/util/log"
+	"github.com/OrigamiWang/msd/register-center/model/dao"
 	"github.com/gin-gonic/gin"
 )
 
@@ -23,5 +26,21 @@ func Proxy(u, prefix string, group *gin.RouterGroup, client *http.Client) {
 		group.PUT(proxyPath, proxyHandler)
 		group.POST(proxyPath, proxyHandler)
 		group.DELETE(proxyPath, proxyHandler)
+	}
+}
+
+func GetLiveSvc() {
+	var svc_cnt int64 = 10
+	match := db.HEART_BEAT_REDIS_PREFIX + "*"
+	if keys, _, err := dao.RC.Scan(match, svc_cnt); err == nil {
+		for _, key := range keys {
+			if val, err := dao.RC.Get(key); err == nil {
+				logutil.Info("key: %v, val: %v", key, val)
+			} else {
+				logutil.Error("get redis error: %v, err")
+			}
+		}
+	} else {
+		logutil.Error("scan redis error: %v, err")
 	}
 }

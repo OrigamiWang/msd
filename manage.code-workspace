@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"path": "manage"
+		},
+		{
+			"path": "micro"
+		},
+		{
+			"path": "conf-center"
+		},
+		{
+			"path": "register-center"
+		},
+		{
+			"path": "gate"
+		},
+		{
+			"path": "manage2"
+		},
+		{
+			"path": "scheduler"
+		}
+	],
+	"settings": {}
+}

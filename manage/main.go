@@ -2,19 +2,17 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"net/http"
 
 	"github.com/OrigamiWang/msd/manage/biz/kafka"
-	"github.com/OrigamiWang/msd/manage/cli"
 	"github.com/OrigamiWang/msd/manage/handler"
 	"github.com/OrigamiWang/msd/micro/auth/tls"
 	"github.com/OrigamiWang/msd/micro/const/svc"
 	"github.com/OrigamiWang/msd/micro/framework"
 	mw "github.com/OrigamiWang/msd/micro/midware"
-	"github.com/OrigamiWang/msd/micro/model"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
-	"github.com/OrigamiWang/msd/micro/util/transfer"
 	"github.com/OrigamiWang/msd/register-center/biz"
 )
 
@@ -44,30 +42,42 @@ func main() {
 	}
 
 	// get resiger config, including port
-	resp, err := cli.Conf.GetSvcByName(svc.MANAGE)
-	if err != nil {
-		logutil.Error("get register config failed, err: %v", err)
-	}
-	m := resp.(map[string]interface{})
-	var registerConfResp *model.Response
-	ma, err := transfer.FacadeRespToMap(m, &registerConfResp)
-	if err != nil {
-		logutil.Error("transfer resp failed, err: %v", err)
-	}
-	var registerConfigMap map[string]interface{}
-	json.Unmarshal([]byte(ma["config"].(string)), &registerConfigMap)
+	// resp, err := cli.Conf.GetSvcByName(svc.MANAGE)
+	// if err != nil {
+	// 	logutil.Error("get register config failed, err: %v", err)
+	// }
+	// m := resp.(map[string]interface{})
+	// var registerConfResp *model.Response
+	// ma, err := transfer.FacadeRespToMap(m, &registerConfResp)
+	// if err != nil {
+	// 	logutil.Error("transfer resp failed, err: %v", err)
+	// }
+	// var registerConfigMap map[string]interface{}
+	// json.Unmarshal([]byte(ma["config"].(string)), &registerConfigMap)
 
-	// start heart beat go rountine, produce msg to topic: HEART_BEAT_TOPIC per minutes, with value registerConfigMap
-	jsonBytes, err := json.Marshal(&registerConfigMap)
-	if err != nil {
-		logutil.Error("marshal registerConfigMap failed, err: %v", err)
-		return
-	}
+	// // start heart beat go rountine, produce msg to topic: HEART_BEAT_TOPIC per minutes, with value registerConfigMap
+	// jsonBytes, err := json.Marshal(&registerConfigMap)
+	// if err != nil {
+	// 	logutil.Error("marshal registerConfigMap failed, err: %v", err)
+	// 	return
+	// }
+	// biz.BeatHeartBeat(svc.MANAGE, string(jsonBytes))
+	// addr := fmt.Sprintf(":%v", registerConfigMap["port"].(float64))
+
+	// test mutiple instance
+	var ip string
+	var port int
+	flag.StringVar(&ip, "ip", "127.0.0.1", "ip")
+	flag.IntVar(&port, "port", 8081, "port")
+	hostMap := make(map[string]interface{})
+	hostMap["ip"] = ip
+	hostMap["port"] = port
+	jsonBytes, _ := json.Marshal(&hostMap)
 	biz.BeatHeartBeat(svc.MANAGE, string(jsonBytes))
+	addr := fmt.Sprintf(":%v", port)
 
 	// get tls config and run server
 	tlsConfig := tls.TlsServerConfig
-	addr := fmt.Sprintf(":%v", registerConfigMap["port"].(float64))
 	srv := &http.Server{
 		Addr:      addr,
 		Handler:   root,
