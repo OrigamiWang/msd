@@ -2,14 +2,15 @@ package main
 
 import (
 	"fmt"
+	"os/exec"
 
 	"github.com/OrigamiWang/msd/scheduler/model"
 )
 
 func main() {
 	// 调用shell启动manage
-	const INSTANCE_NUM = 3
-	const INSTANCE_PORT = 8081
+	const INSTANCE_NUM = 1
+	const INSTANCE_PORT = 8080
 	const MANAGE_PATH = "~/study/msd/manage"
 	// init
 	conf := []*model.InstanceConf{}
@@ -24,7 +25,12 @@ func main() {
 
 	// call shell to start instance
 	for _, inst := range conf {
-		cmsStr := fmt.Sprintf("cd %s && go run main.go -ip=%s -port=%d", inst.ProjectPath, inst.Ip, inst.Port)
-		fmt.Println(cmsStr)
+		cmdStr := fmt.Sprintf("cd %s && go run main.go -ip=%s -port=%d", inst.ProjectPath, inst.Ip, inst.Port)
+		cmd := exec.Command("sh", "-c", cmdStr)
+		if err := cmd.Start(); err != nil {
+			fmt.Printf("启动项目 %s 时出错: %v\n", inst.ProjectPath, err)
+			continue
+		}
+		fmt.Printf("项目 %s 已启动，监听地址：%s，端口：%d\n", inst.ProjectPath, inst.Ip, inst.Port)
 	}
 }
