@@ -4,8 +4,8 @@ go 1.21.0
 
 require (
 	github.com/OrigamiWang/msd/auth v0.0.0-20240211075506-e08a5eed0951
-	github.com/OrigamiWang/msd/conf-center v0.0.0-20240222034718-6fbe2d45d165
-	github.com/OrigamiWang/msd/micro v0.0.0-20240223091252-fd48e1a00b4e
+	github.com/OrigamiWang/msd/conf-center v0.0.0-20240226062123-de37eedb5771
+	github.com/OrigamiWang/msd/micro v0.0.0-20240226071640-57d549a837fe
 	github.com/gin-gonic/gin v1.9.1
 	github.com/mitchellh/mapstructure v1.5.0
 	gorm.io/gorm v1.25.7

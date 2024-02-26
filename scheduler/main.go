@@ -9,12 +9,12 @@ import (
 
 func main() {
 	// 调用shell启动manage
-	const INSTANCE_NUM = 1
-	const INSTANCE_PORT = 8080
+	const INSTANCE_NUM = 3
+	const INSTANCE_PORT = 8081
 	const MANAGE_PATH = "~/study/msd/manage"
 	// init
 	conf := []*model.InstanceConf{}
-	for i := 1; i <= INSTANCE_NUM; i++ {
+	for i := 0; i < INSTANCE_NUM; i++ {
 		conf = append(conf, &model.InstanceConf{
 			Ip:          "127.0.0.1",
 			Port:        INSTANCE_PORT + i,
@@ -25,7 +25,7 @@ func main() {
 
 	// call shell to start instance
 	for _, inst := range conf {
-		cmdStr := fmt.Sprintf("cd %s && go run main.go -ip=%s -port=%d", inst.ProjectPath, inst.Ip, inst.Port)
+		cmdStr := fmt.Sprintf("cd %s && go run main.go -ip=%s -port=%d -instance_id=%d", inst.ProjectPath, inst.Ip, inst.Port, inst.InstanceId)
 		cmd := exec.Command("sh", "-c", cmdStr)
 		if err := cmd.Start(); err != nil {
 			fmt.Printf("启动项目 %s 时出错: %v\n", inst.ProjectPath, err)

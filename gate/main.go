@@ -4,14 +4,14 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strings"
 
 	"github.com/OrigamiWang/msd/gate/biz"
-	"github.com/OrigamiWang/msd/gate/cli"
+	"github.com/OrigamiWang/msd/gate/biz/lb"
 	tls2 "github.com/OrigamiWang/msd/micro/auth/tls"
 	"github.com/OrigamiWang/msd/micro/framework"
-	"github.com/OrigamiWang/msd/micro/model"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
-	"github.com/mitchellh/mapstructure"
+	"github.com/OrigamiWang/msd/register-center/model/dto"
 )
 
 func main() {
@@ -26,38 +26,25 @@ func main() {
 			TLSClientConfig: tls2.TlsServerConfig,
 		},
 	}
-
-	// get service conf
-	resp, err := cli.Conf.GetAllSvc()
+	svcMap, err := biz.GetLiveSvc()
 	if err != nil {
-		logutil.Error("get all register config failed, err: %v", err)
+		logutil.Error("fail to get svc map, err: %v", err)
 	}
-	m := resp.(map[string]interface{})
-	var data model.Response
-	mapstructure.Decode(m, &data)
-	arr := data.Data.([]interface{})
-	for _, raw := range arr {
-		item, ok := raw.(map[string]interface{})
-		if !ok {
-			logutil.Warn("Type assertion failed")
-			break
-		}
-		if item["name"] == "gate" {
-			continue
-		}
-		var registerConfig map[string]interface{}
-		err := json.Unmarshal([]byte(item["config"].(string)), &registerConfig)
-		if err != nil {
-			logutil.Error("decode config failed, err: %v", err)
-			break
-		}
-		logutil.Info("name: %v, ip: %v, port: %v", item["name"], registerConfig["ip"], registerConfig["port"])
-
-		url := fmt.Sprintf("https://%v:%v", registerConfig["ip"], registerConfig["port"])
-		prefix := fmt.Sprintf("/%s", item["name"])
-
-		// proxy
-		biz.Proxy(url, prefix, public, client)
+	fmt.Println("svcMap: ", svcMap)
+	lb := lb.NewLoadBalancer()
+	for k, v := range svcMap {
+		fmt.Println(k)
+		instJson := v.(string)
+		instConf := &dto.InstanceConf{}
+		json.Unmarshal([]byte(instJson), instConf)
+		fmt.Println(instConf)
+		url := fmt.Sprintf("https://%v:%v", instConf.Ip, instConf.Port)
+		svc_name := strings.Split(k, "_")[0]
+		lb.AddService(svc_name, url)
+	}
+	for k, _ := range lb.GetAllBalancer() {
+		prefix := fmt.Sprintf("/%s", k)
+		biz.Proxy(lb, prefix, public, client)
 	}
 
 	if err := root.Run(":8848"); err != nil {

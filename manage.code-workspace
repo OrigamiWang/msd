@@ -16,9 +16,6 @@
 			"path": "gate"
 		},
 		{
-			"path": "manage2"
-		},
-		{
 			"path": "scheduler"
 		}
 	],

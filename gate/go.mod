@@ -3,11 +3,10 @@ module github.com/OrigamiWang/msd/gate
 go 1.21.0
 
 require (
-	github.com/OrigamiWang/msd/conf-center v0.0.0-20240222073807-7bf2bd7881f6
-	github.com/OrigamiWang/msd/micro v0.0.0-20240223091252-fd48e1a00b4e
-	github.com/OrigamiWang/msd/register-center v0.0.0-20240223090916-afe424828749
+	github.com/OrigamiWang/msd/conf-center v0.0.0-20240226062123-de37eedb5771
+	github.com/OrigamiWang/msd/micro v0.0.0-20240226071640-57d549a837fe
+	github.com/OrigamiWang/msd/register-center v0.0.0-20240226075657-fa342cbe60a7
 	github.com/gin-gonic/gin v1.9.1
-	github.com/mitchellh/mapstructure v1.5.0
 )
 
 require (

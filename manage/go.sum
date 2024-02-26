@@ -4,6 +4,8 @@ github.com/OrigamiWang/msd/auth v0.0.0-20240211075506-e08a5eed0951 h1:z1VwF4bXEj
 github.com/OrigamiWang/msd/auth v0.0.0-20240211075506-e08a5eed0951/go.mod h1:Ttf8liybWL8eO0tgphy8f6v0w7hhuOeoBK5syEbxqa0=
 github.com/OrigamiWang/msd/conf-center v0.0.0-20240222034718-6fbe2d45d165 h1:DYD9TiRl45XNJZLdLP+WTZAeBzlEqLa0nyx7GS4t3EA=
 github.com/OrigamiWang/msd/conf-center v0.0.0-20240222034718-6fbe2d45d165/go.mod h1:m4wklqOLKuKUX1wCdn4ngzuAQjxADFAptLNGM0EdfzI=
+github.com/OrigamiWang/msd/conf-center v0.0.0-20240226062123-de37eedb5771 h1:gQJX3gK7Ml2uMFzwyYP17JOJ/tSG+jcymC42OJfR6q8=
+github.com/OrigamiWang/msd/conf-center v0.0.0-20240226062123-de37eedb5771/go.mod h1:Abk1wKg/pgoNRL1CLWMwZfmqYdQp5t5xGNoxv+MkLnY=
 github.com/OrigamiWang/msd/micro v0.0.0-20240223033803-97823bd8b902 h1:uxJgSlvuUFra3aeFmO6mE1+13xMQ8cDNClndJ+7irFA=
 github.com/OrigamiWang/msd/micro v0.0.0-20240223033803-97823bd8b902/go.mod h1:yrCcel96+LEgGcyWTSl5qAQN5yDcKW7raJvShBsgV48=
 github.com/OrigamiWang/msd/micro v0.0.0-20240223063728-caf08a4ac508 h1:VRtZbezcA3UwjmR8BYioOVid6KlCuaAQr/GABZmgjKQ=
@@ -16,6 +18,8 @@ github.com/OrigamiWang/msd/micro v0.0.0-20240223090144-f69e7715f997 h1:hnmL3CmJf
 github.com/OrigamiWang/msd/micro v0.0.0-20240223090144-f69e7715f997/go.mod h1:yrCcel96+LEgGcyWTSl5qAQN5yDcKW7raJvShBsgV48=
 github.com/OrigamiWang/msd/micro v0.0.0-20240223091252-fd48e1a00b4e h1:TgbTfmpQoD9NzUNjJeKcSlyui7PVfZUK1XjOebbgudA=
 github.com/OrigamiWang/msd/micro v0.0.0-20240223091252-fd48e1a00b4e/go.mod h1:zd1znJoYIs0fL5NliPaBWxB9hSmnpkSvVGVI+5zHOl8=
+github.com/OrigamiWang/msd/micro v0.0.0-20240226071640-57d549a837fe h1:ArAGNM44gb82PBUY97fAWMFe03usFO/IO0+Da51uCbY=
+github.com/OrigamiWang/msd/micro v0.0.0-20240226071640-57d549a837fe/go.mod h1:zd1znJoYIs0fL5NliPaBWxB9hSmnpkSvVGVI+5zHOl8=
 github.com/OrigamiWang/msd/register-center v0.0.0-20240223084128-706e70152e64 h1:3UuJ8Q4nhnj+oWjVOh0g9dCOXmNpeZjF25Ki/QEBPOU=
 github.com/OrigamiWang/msd/register-center v0.0.0-20240223084128-706e70152e64/go.mod h1:F6w11GXDG1aZLI8d1FUxzCMKKuytwo0kuUI8zvg67ew=
 github.com/OrigamiWang/msd/register-center v0.0.0-20240223085336-a2c49a51c687 h1:6Y7pCIWJMQ9RVepDFEgzjBkDvpwpmjW2/lrr2Fg3Jys=

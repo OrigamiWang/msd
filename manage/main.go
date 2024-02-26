@@ -41,37 +41,18 @@ func main() {
 
 	}
 
-	// get resiger config, including port
-	// resp, err := cli.Conf.GetSvcByName(svc.MANAGE)
-	// if err != nil {
-	// 	logutil.Error("get register config failed, err: %v", err)
-	// }
-	// m := resp.(map[string]interface{})
-	// var registerConfResp *model.Response
-	// ma, err := transfer.FacadeRespToMap(m, &registerConfResp)
-	// if err != nil {
-	// 	logutil.Error("transfer resp failed, err: %v", err)
-	// }
-	// var registerConfigMap map[string]interface{}
-	// json.Unmarshal([]byte(ma["config"].(string)), &registerConfigMap)
-
-	// // start heart beat go rountine, produce msg to topic: HEART_BEAT_TOPIC per minutes, with value registerConfigMap
-	// jsonBytes, err := json.Marshal(&registerConfigMap)
-	// if err != nil {
-	// 	logutil.Error("marshal registerConfigMap failed, err: %v", err)
-	// 	return
-	// }
-	// biz.BeatHeartBeat(svc.MANAGE, string(jsonBytes))
-	// addr := fmt.Sprintf(":%v", registerConfigMap["port"].(float64))
-
-	// test mutiple instance
+	// get ip, port, instance_id by shell environment variable
 	var ip string
 	var port int
+	var instanceId int
 	flag.StringVar(&ip, "ip", "127.0.0.1", "ip")
 	flag.IntVar(&port, "port", 8081, "port")
+	flag.IntVar(&instanceId, "instance_id", 0, "instance id")
+	flag.Parse()
 	hostMap := make(map[string]interface{})
 	hostMap["ip"] = ip
 	hostMap["port"] = port
+	hostMap["instance_id"] = instanceId
 	jsonBytes, _ := json.Marshal(&hostMap)
 	biz.BeatHeartBeat(svc.MANAGE, string(jsonBytes))
 	addr := fmt.Sprintf(":%v", port)

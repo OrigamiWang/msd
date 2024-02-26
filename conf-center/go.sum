@@ -4,6 +4,8 @@ github.com/OrigamiWang/msd/micro v0.0.0-20240223090144-f69e7715f997 h1:hnmL3CmJf
 github.com/OrigamiWang/msd/micro v0.0.0-20240223090144-f69e7715f997/go.mod h1:yrCcel96+LEgGcyWTSl5qAQN5yDcKW7raJvShBsgV48=
 github.com/OrigamiWang/msd/micro v0.0.0-20240223091252-fd48e1a00b4e h1:TgbTfmpQoD9NzUNjJeKcSlyui7PVfZUK1XjOebbgudA=
 github.com/OrigamiWang/msd/micro v0.0.0-20240223091252-fd48e1a00b4e/go.mod h1:zd1znJoYIs0fL5NliPaBWxB9hSmnpkSvVGVI+5zHOl8=
+github.com/OrigamiWang/msd/micro v0.0.0-20240226071640-57d549a837fe h1:ArAGNM44gb82PBUY97fAWMFe03usFO/IO0+Da51uCbY=
+github.com/OrigamiWang/msd/micro v0.0.0-20240226071640-57d549a837fe/go.mod h1:zd1znJoYIs0fL5NliPaBWxB9hSmnpkSvVGVI+5zHOl8=
 github.com/OrigamiWang/msd/register-center v0.0.0-20240223090144-f69e7715f997 h1:H2n7DnqTwZo6BGxlUrDkpwyJRprAQ99whADKEfHf7As=
 github.com/OrigamiWang/msd/register-center v0.0.0-20240223090144-f69e7715f997/go.mod h1:wv0UF0T8edSWs7iRGyN2KMWE1SoHNy1x0rn5htrDGxE=
 github.com/OrigamiWang/msd/register-center v0.0.0-20240223090916-afe424828749 h1:9BXRLSuFRndy/YEi8uNFtwC0difpcMFhu+N6Y0NQeaU=

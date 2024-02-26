@@ -9,6 +9,7 @@
 	- micro 公共库
 	- manage 用户管理
 	- register-center 服务注册中心
+	- scheduler 启动器
 
 	
 
