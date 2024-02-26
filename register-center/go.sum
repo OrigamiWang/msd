@@ -8,6 +8,8 @@ github.com/OrigamiWang/msd/micro v0.0.0-20240223090144-f69e7715f997 h1:hnmL3CmJf
 github.com/OrigamiWang/msd/micro v0.0.0-20240223090144-f69e7715f997/go.mod h1:yrCcel96+LEgGcyWTSl5qAQN5yDcKW7raJvShBsgV48=
 github.com/OrigamiWang/msd/micro v0.0.0-20240223091252-fd48e1a00b4e h1:TgbTfmpQoD9NzUNjJeKcSlyui7PVfZUK1XjOebbgudA=
 github.com/OrigamiWang/msd/micro v0.0.0-20240223091252-fd48e1a00b4e/go.mod h1:zd1znJoYIs0fL5NliPaBWxB9hSmnpkSvVGVI+5zHOl8=
+github.com/OrigamiWang/msd/micro v0.0.0-20240226071640-57d549a837fe h1:ArAGNM44gb82PBUY97fAWMFe03usFO/IO0+Da51uCbY=
+github.com/OrigamiWang/msd/micro v0.0.0-20240226071640-57d549a837fe/go.mod h1:zd1znJoYIs0fL5NliPaBWxB9hSmnpkSvVGVI+5zHOl8=
 github.com/bsm/ginkgo/v2 v2.12.0 h1:Ny8MWAHyOepLGlLKYmXG4IEkioBysk6GpaRTLC8zwWs=
 github.com/bsm/ginkgo/v2 v2.12.0/go.mod h1:SwYbGRRDovPVboqFv0tPTcG1sN61LM1Z4ARdbAV9g4c=
 github.com/bsm/gomega v1.27.10 h1:yeMWxP2pV2fG3FgAODIY8EiRE3dy0aeFYt4l7wh6yKA=

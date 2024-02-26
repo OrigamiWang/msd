@@ -1,6 +1,8 @@
 package biz
 
 import (
+	"encoding/json"
+	"fmt"
 	"time"
 
 	"github.com/IBM/sarama"
@@ -9,6 +11,7 @@ import (
 	"github.com/OrigamiWang/msd/micro/mq/kafka"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
 	"github.com/OrigamiWang/msd/register-center/model/dao"
+	"github.com/OrigamiWang/msd/register-center/model/dto"
 )
 
 // heartbeat listener
@@ -19,7 +22,9 @@ func ListenHeartBeat() {
 func heartBeatHandler(strArr ...string) {
 	kafkaKey := strArr[0]
 	kafkaVal := strArr[1]
-	key := db.HEART_BEAT_REDIS_PREFIX + kafkaKey
+	instConf := dto.InstanceConf{}
+	json.Unmarshal([]byte(kafkaVal), &instConf)
+	key := fmt.Sprintf("%s_%s_%d", db.HEART_BEAT_REDIS_PREFIX, kafkaKey, instConf.InstanceId)
 	dao.RC.Set(key, kafkaVal, time.Second*10)
 	// dao.RC.Set(key, kafkaVal, time.Minute*1)
 }
