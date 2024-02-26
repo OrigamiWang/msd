@@ -21,7 +21,7 @@ type ConfCenterFacade struct {
 
 func (facade *ConfCenterFacade) GetConf(svcName string) (interface{}, error) {
 	uri := fmt.Sprintf("/config/%s", svcName)
-	resp, err := client.RequestWithHead(httpmethod.GET, "localhost:8084", uri, http.Header{}, nil)
+	resp, err := client.RequestWithHead(httpmethod.GET, "localhost:8849", uri, http.Header{}, nil)
 	if err != nil {
 		logutil.Error("request with head failed, err: %v", err)
 		return nil, err
@@ -32,7 +32,7 @@ func (facade *ConfCenterFacade) GetConf(svcName string) (interface{}, error) {
 
 func (facade *ConfCenterFacade) UpdateConf(svcName string, conf interface{}) (interface{}, error) {
 	uri := fmt.Sprintf("/config/%s", svcName)
-	resp, err := client.RequestWithHead(httpmethod.PUT, "localhost:8084", uri, http.Header{}, conf)
+	resp, err := client.RequestWithHead(httpmethod.PUT, "localhost:8849", uri, http.Header{}, conf)
 	if err != nil {
 		logutil.Error("request with head failed, err: %v", err)
 		return nil, err
@@ -42,7 +42,7 @@ func (facade *ConfCenterFacade) UpdateConf(svcName string, conf interface{}) (in
 }
 
 func (facade *ConfCenterFacade) GetAllSvc() (interface{}, error) {
-	resp, err := client.RequestWithHead(httpmethod.GET, "localhost:8084", "/regconf", http.Header{}, nil)
+	resp, err := client.RequestWithHead(httpmethod.GET, "localhost:8849", "/regconf", http.Header{}, nil)
 	if err != nil {
 		logutil.Error("request with head failed, err: %v", err)
 		return nil, err
@@ -53,7 +53,7 @@ func (facade *ConfCenterFacade) GetAllSvc() (interface{}, error) {
 
 func (facade *ConfCenterFacade) GetSvcByName(name string) (interface{}, error) {
 	uri := fmt.Sprintf("/regconf/%s", name)
-	resp, err := client.RequestWithHead(httpmethod.GET, "localhost:8084", uri, http.Header{}, nil)
+	resp, err := client.RequestWithHead(httpmethod.GET, "localhost:8849", uri, http.Header{}, nil)
 	if err != nil {
 		logutil.Error("request with head failed, err: %v", err)
 		return nil, err
