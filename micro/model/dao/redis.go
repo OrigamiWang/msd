@@ -55,3 +55,7 @@ func (rc *RedisClient) Ttl(key string) (time.Duration, error) {
 func (rc *RedisClient) Scan(match string, cnt int64) (keys []string, cursor uint64, err error) {
 	return rc.Client.Scan(context.Background(), 0, match, cnt).Result()
 }
+
+func (rc *RedisClient) Subsribe(channel string) {
+	rc.Client.Subscribe(context.Background(), channel)
+}
