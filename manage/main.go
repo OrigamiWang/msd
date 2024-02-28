@@ -6,12 +6,15 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/IBM/sarama"
 	"github.com/OrigamiWang/msd/manage/biz/kafka"
 	"github.com/OrigamiWang/msd/manage/handler"
 	"github.com/OrigamiWang/msd/micro/auth/tls"
+	"github.com/OrigamiWang/msd/micro/const/mq"
 	"github.com/OrigamiWang/msd/micro/const/svc"
 	"github.com/OrigamiWang/msd/micro/framework"
 	mw "github.com/OrigamiWang/msd/micro/midware"
+	Kafka "github.com/OrigamiWang/msd/micro/mq/kafka"
 	logutil "github.com/OrigamiWang/msd/micro/util/log"
 	"github.com/OrigamiWang/msd/register-center/biz"
 )
@@ -56,6 +59,19 @@ func main() {
 	jsonBytes, _ := json.Marshal(&hostMap)
 	biz.BeatHeartBeat(svc.MANAGE, string(jsonBytes))
 	addr := fmt.Sprintf(":%v", port)
+	u := fmt.Sprintf("https://%v:%v", ip, port)
+
+	// produce msg to gate proxy
+	msg := &sarama.ProducerMessage{
+		Topic: mq.KAFKA_GATE_PROXY,
+		Value: sarama.StringEncoder(u),
+		Key:   sarama.StringEncoder(svc.MANAGE),
+	}
+	logutil.Info("produce msg to gate proxy")
+	e := Kafka.ProduceMsg(msg)
+	if e != nil {
+		logutil.Error("produce msg to gate proxy failed, err: %v", e)
+	}
 
 	// get tls config and run server
 	tlsConfig := tls.TlsServerConfig

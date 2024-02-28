@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/OrigamiWang/msd/gate/biz"
+	"github.com/OrigamiWang/msd/gate/biz/kafka"
 	"github.com/OrigamiWang/msd/gate/biz/lb"
 	tls2 "github.com/OrigamiWang/msd/micro/auth/tls"
 	"github.com/OrigamiWang/msd/micro/framework"
@@ -26,25 +27,24 @@ func main() {
 			TLSClientConfig: tls2.TlsServerConfig,
 		},
 	}
+	kafka.GateProxyConsumer(public, client)
 	svcMap, err := biz.GetLiveSvc()
 	if err != nil {
 		logutil.Error("fail to get svc map, err: %v", err)
 	}
 	fmt.Println("svcMap: ", svcMap)
-	lb := lb.NewLoadBalancer()
 	for k, v := range svcMap {
 		fmt.Println(k)
 		instJson := v.(string)
 		instConf := &dto.InstanceConf{}
 		json.Unmarshal([]byte(instJson), instConf)
-		fmt.Println(instConf)
 		url := fmt.Sprintf("https://%v:%v", instConf.Ip, instConf.Port)
 		svc_name := strings.Split(k, "_")[0]
-		lb.AddService(svc_name, url)
+		lb.LB.AddService(svc_name, url)
 	}
-	for k, _ := range lb.GetAllBalancer() {
+	for k, _ := range lb.LB.GetAllBalancer() {
 		prefix := fmt.Sprintf("/%s", k)
-		biz.Proxy(lb, prefix, public, client)
+		biz.Proxy(lb.LB, prefix, public, client)
 	}
 
 	if err := root.Run(":8848"); err != nil {
