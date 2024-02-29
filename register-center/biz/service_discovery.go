@@ -25,7 +25,7 @@ func ListenServiceDiscovery() {
 			} else {
 				logutil.Error("scan redis error: %v, err")
 			}
-			time.Sleep(time.Second * 5)
+			time.Sleep(time.Second * 30)
 		}
 	}()
 }
